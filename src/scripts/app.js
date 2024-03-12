@@ -21,10 +21,4 @@
 
 // -----
 
-
-
-
-
-// ----- Code Formatting -----
-
-// TO CHECK CODE FROM GPT: https://chat.openai.com/c/47d46145-bab2-4a11-a1d9-ba05dd0bd9b0
+//! TOUS LES SCRIPTS qui ont été utilisés pour restructuré et adapté la base de donnée ne sont plus dans les fichiers du projet. Il n'y a plus aucune nécessité de les utiliser puisque la base de donnée JSON est faite et optimisée !

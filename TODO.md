@@ -5,7 +5,7 @@
 - Trier par Pays Européen; (~ 18k lignes)
 - Trier du plus récent au plus ancien;
 - Mettre toutes les clés des objects en minuscule;
-- Ajouter un ID à chaque object. (1539 IDs au total)
+- Ajouter un ID à chaque object; (1539 IDs au total)
 
 +++++
 
@@ -20,4 +20,8 @@
 
 +++++
 
-- Réorganiser l'ordre des clés/valeurs du fichier ufo_data_v8
+- Réorganiser l'ordre des clés/valeurs;
+- Modifier le format de date de "MM/jj/aaaa" à "jj/MM/aaaa";
+- Regrouper certaines clés/valeurs dans de nouveaux objets (objets dans objets);
+- Rajouter la clé "posted" sur tous les objets qui ne l'ont pas;
+- Restructurer les clés/valeurs dans le même ordre pour chaque objet JSON;
