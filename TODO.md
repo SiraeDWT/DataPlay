@@ -25,3 +25,11 @@
 - Regrouper certaines clés/valeurs dans de nouveaux objets (objets dans objets);
 - Rajouter la clé "posted" sur tous les objets qui ne l'ont pas;
 - Restructurer les clés/valeurs dans le même ordre pour chaque objet JSON;
+
++++++
+
+- Créer un fichier JSON contenant les infos exploitables des pays européens;
+
++++++
+
+- Faire des tests de tout type pour jouer avec les données;
