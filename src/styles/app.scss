@@ -1,2 +1,137 @@
-@import 'utils/variables';
-@import 'components/type';
+@import './utils/variables';
+@import './components/type';
+
+$ff--Orbitron: 'Orbitron';
+$ff--Space-Grotesk: 'Grotesk spatial';
+
+// color
+$c--dark-purple: #4A0074;
+$c--purple: #B131FA;
+$c--pink: #FF1CC0;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: $c--purple;
+}
+
+.section__text{
+    color: white;
+
+    a{
+        color: yellow;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.section__slider {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 0px 20px;
+
+    // grid
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    grid-gap: 20px;
+
+    .slider {
+        width: 100%;
+        height: 100%;
+        grid-column: 1 / 8;
+        position: relative;
+
+        &__container {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &__list {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            padding: 0;
+            margin: 0;
+
+            // transition slider elements 
+            transition: 1.5s;
+
+            // création d'une scène 3d
+            transform: perspective(1000px);
+            transform-style: preserve-3d;
+        }
+
+        canvas {
+            position: absolute;
+            top: -350px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            width: 630px;
+            height: 630px;
+            transform-style: preserve-3d;
+        }
+
+        &__land {
+            position: absolute;
+            top: 140px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotateY(calc(var(--i) * 18.947deg)) translateZ(400px) ;
+            background-color: aqua;
+            list-style: none;
+            border-radius: 15px;
+            transform-origin: center;
+            transform-style: preserve-3d;
+        }
+
+        &__buttons {
+            width: 250px;
+            height: 50px;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            top: 640px;
+            left: 50%;
+            transform: translate(-50%, 0%);
+            z-index: 20;
+            
+            button {
+                width: 50px;
+                height: 50px;
+                border: none;
+                background-color: rgba(255, 255, 255, 0.484);
+                border-radius: 100%;
+            }
+        }
+
+        &__left {
+
+            svg {
+                width: 100%;
+                height: 100%;
+                transform: rotate(180deg);
+            }
+        }
+
+        &__right {
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
