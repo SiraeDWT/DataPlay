@@ -1,0 +1,164 @@
+[
+    {
+        "austria": {
+            "id": 1,
+            "residents": 8922082
+        }
+    },
+    {
+        "belgium": {
+            "id": 2,
+            "residents": 11521238
+        }
+    },
+    {
+        "bulgaria": {
+            "id": 3,
+            "residents": 6885868
+        }
+    },
+    {
+        "croatia": {
+            "id": 4,
+            "residents": 4060135
+        }
+    },
+    {
+        "cyprus": {
+            "id": 5,
+            "residents": 1251488
+        }
+    },
+    {
+        "czechRepublic": {
+            "id": 6,
+            "residents": 10524167
+        }
+    },
+    {
+        "denmark": {
+            "id": 7,
+            "residents": 5854240
+        }
+    },
+    {
+        "estonia": {
+            "id": 8,
+            "residents": 1328701
+        }
+    },
+    {
+        "finland": {
+            "id": 9,
+            "residents": 5535992
+        }
+    },
+    {
+        "france": {
+            "id": 10,
+            "residents": 64531444
+        }
+    },
+    {
+        "germany": {
+            "id": 11,
+            "residents": 83408554
+        }
+    },
+    {
+        "greece": {
+            "id": 12,
+            "residents": 10445365
+        }
+    },
+    {
+        "hungary": {
+            "id": 13,
+            "residents": 9709786
+        }
+    },
+    {
+        "ireland": {
+            "id": 14,
+            "residents": 4986526
+        }
+    },
+    {
+        "italy": {
+            "id": 15,
+            "residents": 59240329
+        }
+    },
+    {
+        "latvia": {
+            "id": 16,
+            "residents": 1873919
+        }
+    },
+    {
+        "lithuania": {
+            "id": 17,
+            "residents": 2810761
+        }
+    },
+    {
+        "luxembourg": {
+            "id": 18,
+            "residents": 639321
+        }
+    },
+    {
+        "malta": {
+            "id": 19,
+            "residents": 526748
+        }
+    },
+    {
+        "netherlands": {
+            "id": 20,
+            "residents": 17475415
+        }
+    },
+    {
+        "poland": {
+            "id": 21,
+            "residents": 38036118
+        }
+    },
+    {
+        "portugal": {
+            "id": 22,
+            "residents": 10290103
+        }
+    },
+    {
+        "romania": {
+            "id": 23,
+            "residents": 19328560
+        }
+    },
+    {
+        "slovakia": {
+            "id": 24,
+            "residents": 5447622
+        }
+    },
+    {
+        "slovenia": {
+            "id": 25,
+            "residents": 2119410
+        }
+    },
+    {
+        "spain": {
+            "id": 26,
+            "residents": 47486935
+        }
+    },
+    {
+        "sweden": {
+            "id": 27,
+            "residents": 10467097
+        }
+    }
+]
