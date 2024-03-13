@@ -1,4 +1,4 @@
-# DataPlay 2024
+# DataPlay 2024 - Project Data Non Identified
 
 Projet DataPlay 2024
 
@@ -9,7 +9,7 @@ Projet DataPlay 2024
 ### Install
 
 - `npm install`
-- 
+
 ### Commands
 
 - `npm start` : run a local server on port 3000
@@ -33,4 +33,4 @@ For school project purpose only.
 
 -----
 
-From the **DP24** team - __[_Dylan Vercalsteren_](https://dylan-vercalsteren.be)__, __[_Noa Jacquemin_](http://noa-jacquemin.be/)__, __[_Romain Collin_](http://romaincollin.be/)__,  __[_Thibault Varga_](#)__.
+From the **P.D.N.I.** project team - __[_Dylan Vercalsteren_](https://dylan-vercalsteren.be)__, __[_Noa Jacquemin_](http://noa-jacquemin.be/)__, __[_Romain Collin_](http://romaincollin.be/)__,  __[_Thibault Varga_](#)__.
