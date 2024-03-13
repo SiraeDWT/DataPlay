@@ -2,7 +2,7 @@
 
 console.info('%cLes données qui suivent sont des tests de récupération de données qui nous serviront plus tard dans le projet.', 'color: black; background: yellow; font-size: 17px');
 
-const ufoUrl = '../assets/data/ufo_data_final.json';
+const ufoUrl = '/assets/data/ufo_data_final.json';
 
 fetch(ufoUrl)
     .then((response) => {
@@ -27,7 +27,7 @@ fetch(ufoUrl)
 
 
 
-const countryUrl = '../assets/data/country_data.json';
+const countryUrl = '/assets/data/country_data.json';
 
 fetch(countryUrl)
     .then((response) => {
