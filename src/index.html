@@ -26,7 +26,74 @@
     <script src="scripts/app.js" defer></script>
 </head>
 <body>
-    <h1>DataPlay</h1>
-    <p>Regardez la console pour observer les tests de données</p>
+    
+
+    <section class="section__text">
+        <h1>DataPlay</h1>
+        <p>Regardez la console pour observer les tests de données</p>
+
+        <div>
+            <a href="https://www.figma.com/file/0JY14KW1te0TMfpAXc6zyS/DataPlay?type=design&node-id=0-1&mode=design&t=zt6T2QVTirt3GDRo-0" target="_blank">Idées DA</a>
+            <a href="https://docs.google.com/document/d/1hzq3gOjcpvMUpWlreFj8peRPVdlhaSquL-xs6ZfcdpQ/edit" target="_blank">Case study</a>
+            <a href="https://dylan-vercalsteren.be/projets/dataplay/assets/data/ufo_data_final.json" target="_blank">Base de données JSON des cas d'ovnis</a>
+            <a href="https://dylan-vercalsteren.be/projets/dataplay/assets/data/country_data.json" target="_blank">Base de données des pays d'Europe</a>
+        </div>
+        
+
+        <video width="640" height="360" controls>
+            <source src="./assets/videos/headerordi.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la lecture de la vidéo.
+        </video>
+        <video width="640" height="360" controls>
+            <source src="./assets/videos/headertel.mp4" type="video/mp4">
+            Votre navigateur ne prend pas en charge la lecture de la vidéo.
+        </video>
+
+    </section>
+
+    <section class="section__slider">
+        
+        <div class="slider">
+          <div class="slider__container">
+            <ul class="slider__list">
+              <!-- slider map -->
+              <canvas id="scene"></canvas>
+              
+              <!-- slider elements -->
+              <li class="slider__land slider__estonie" style="--i:19;"></li>
+              <li class="slider__land slider__finlande" style="--i:18;"></li>
+              <li class="slider__land slider__france" style="--i:17;"></li>
+              <li class="slider__land slider__grece" style="--i:16;"></li>
+              <li class="slider__land slider__hongrie" style="--i:15;"></li>
+              <li class="slider__land slider__irlande" style="--i:14;"></li>
+              <li class="slider__land slider__italie" style="--i:13;"></li>
+              <li class="slider__land slider__lettonie" style="--i:12;"></li>
+              <li class="slider__land slider__lituanie" style="--i:11;"></li>
+              <li class="slider__land slider__luxembourg" style="--i:10;"></li>
+              <li class="slider__land slider__malte" style="--i:9;"></li>
+              <li class="slider__land slider__pays-bas" style="--i:8;"></li>
+              <li class="slider__land slider__pologne" style="--i:7;"></li>
+              <li class="slider__land slider__portugal" style="--i:6;"></li>
+              <li class="slider__land slider__rep-tcheque" style="--i:5;"></li>
+              <li class="slider__land slider__roumanie" style="--i:4;"></li>
+              <li class="slider__land slider__slovaquie" style="--i:3;"></li>
+              <li class="slider__land slider__slovenie" style="--i:2;"></li>
+              <li class="slider__land slider__suede" style="--i:1;"></li>
+            </ul>
+          </div>
+          <div class="slider__buttons">
+            <button class="slider__left">
+              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <button class="slider__right">
+              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+          </div>
+        </div>
+      </section>
 </body>
 </html>
