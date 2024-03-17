@@ -24,11 +24,28 @@ body {
     background-color: $c--purple;
 }
 
-.section__text{
+.data{
     color: white;
+    max-width: 75%;
+    margin: 0 auto;
 
-    a{
-        color: yellow;
+    &__country{
+        cursor: pointer;
+        background-color: #1e1e1e;
+        padding: 5px;
+        border: none;
+        color: #f1f1f1;
+    }
+
+    &__content{
+        margin-top: 44px;
+        background-color: #1e1e1e;
+        padding: 15px 25px;
+        display: none;
+
+        &--show{
+            display: block;
+        }
     }
 }
 
