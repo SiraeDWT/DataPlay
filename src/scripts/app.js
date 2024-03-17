@@ -14,8 +14,12 @@ fetch(ufoUrl)
 
         const countries = ['austria', 'belgium', 'bulgaria', 'croatia', 'cyprus', /*'czech republic'*/, 'denmark', 'estonia', 'finland', 'france', 'germany', 'greece', 'hungary', 'ireland', 'italy', 'latvia', 'lithuania', 'luxembourg', 'malta', 'netherlands', 'poland', 'portugal', 'romania', 'slovakia', 'slovenia', 'spain', 'sweden'];
 
+        let contentText = document.querySelector('.data__content');
+        let currentCountry = null;
+
         countries.forEach(country => {
             let btnCountry = document.getElementById(country);
+            
 
             btnCountry.addEventListener('click', () => {
               const countryFilter = data.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
@@ -49,15 +53,34 @@ fetch(ufoUrl)
               let percentageCity = ((maxCountCity / countryFilter.length) * 100).toFixed(2);
               let percentageCountry = ((countryFilter.length / data.length) * 100).toFixed(2);
   
-              console.log(`
-                  ${countryFilter.length} cas d'OVNI recensés en ${country.firstLetterCapitalize()} sur ${data.length} cas recensés en Europe.
-                  ${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.
-                  ${percentageCountry} % des cas en Europe ont lieu à ${country.firstLetterCapitalize()}.
-              `);
+
+              if (currentCountry === country) {
+                  contentText.classList.remove('data__content--show');
+                  currentCountry = null;
+              } else {
+                  contentText.classList.add('data__content--show');
+                  contentText.innerHTML = `
+                    <p>${countryFilter.length} cas d'OVNI recensés en ${country.firstLetterCapitalize()} sur ${data.length} cas recensés en Europe.</p>
+                    <p>${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
+                    <p>${percentageCountry} % des cas en Europe ont lieu à ${country.firstLetterCapitalize()}.</p>
+                  `;
+                  currentCountry = country;
+              }
+              
+              // console.log(`
+              //     ${countryFilter.length} cas d'OVNI recensés en ${country.firstLetterCapitalize()} sur ${data.length} cas recensés en Europe.
+              //     ${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.
+              //     ${percentageCountry} % des cas en Europe ont lieu à ${country.firstLetterCapitalize()}.
+              // `);
             });
         });
 
+
+        // Lieux inconnus pour: France, Malte, Pologne, Portugal.
+
         //TODO: RECUPERER LE PAYS AVEC LE PLUS HAUT TAUX DE CAS / Zapper les villes inconnues ? / Calculer la proba par habitant de voir un ovni dans un pays (exemple: en Belgique, un habitant à xx.xx % de proba de voir un ovni (sur base du nombre de cas et du nombre d'habitants))   
+
+        // Afficher la ville dans laquelle on a le plus de proba de voir un ovni !
     })
     .catch(error => console.error(`Une erreur s'est produite lors de la récupération du fichier JSON: ${error}`));
 
