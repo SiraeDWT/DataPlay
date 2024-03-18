@@ -4,7 +4,33 @@ String.prototype.firstLetterCapitalize = function() {
     return this.replace(/^./, this[0].toUpperCase());
 };
 
-const ufoUrl = '/assets/data/ufo_data_final.json';
+
+// const countryUrl = 'assets/data/country_data.json';
+
+// let arr = [];
+
+// fetch(countryUrl)
+//     .then((response) => {
+//         return response.json();
+//     })
+//     .then((data) => {      
+//         for (let i = 0; i < data.length; i++) {
+//             const countryName = Object.keys(data[i])[0];
+//             const countryData = data[i][countryName];
+
+            
+
+//             console.log(`${countryName.firstLetterCapitalize()}: ${countryData.residents} résidents`);
+//         }
+//     })
+//     .catch(error => console.error(`Une erreur s'est produite lors de la récupération du fichier JSON: ${error}`));
+
+
+
+
+
+
+const ufoUrl = 'assets/data/ufo_data_final.json';
 
 fetch(ufoUrl)
     .then((response) => {
@@ -12,7 +38,7 @@ fetch(ufoUrl)
     })
     .then((data) => {
 
-        const countries = ['austria', 'belgium', 'bulgaria', 'croatia', 'cyprus', /*'czech republic'*/, 'denmark', 'estonia', 'finland', 'france', 'germany', 'greece', 'hungary', 'ireland', 'italy', 'latvia', 'lithuania', 'luxembourg', 'malta', 'netherlands', 'poland', 'portugal', 'romania', 'slovakia', 'slovenia', 'spain', 'sweden'];
+        const countries = ['austria', 'belgium', 'bulgaria', 'croatia', 'cyprus', /*'czech republic',*/ 'denmark', 'estonia', 'finland', 'france', 'germany', 'greece', 'hungary', 'ireland', 'italy', 'latvia', 'lithuania', 'luxembourg', 'malta', 'netherlands', 'poland', 'portugal', 'romania', 'slovakia', 'slovenia', 'spain', 'sweden'];
 
         let contentText = document.querySelector('.data__content');
         let currentCountry = null;
@@ -22,7 +48,7 @@ fetch(ufoUrl)
             
 
             btnCountry.addEventListener('click', () => {
-              const countryFilter = data.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
+              const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
 
               let counts = {};
   
