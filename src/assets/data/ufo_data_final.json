@@ -260,7 +260,7 @@
       "id": 17,
       "location": {
         "city": "Decin",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "25/7/2020",
@@ -3620,7 +3620,7 @@
       "id": 227,
       "location": {
         "city": "Liberec",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "13/5/2014",
@@ -4452,7 +4452,7 @@
       "id": 279,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "27/7/2013",
@@ -5665,7 +5665,7 @@
       "id": 355,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "1/5/2012",
@@ -6113,7 +6113,7 @@
       "id": 383,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "13/12/2011",
@@ -7857,7 +7857,7 @@
       "id": 492,
       "location": {
         "city": "",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "24/4/2010",
@@ -8225,7 +8225,7 @@
       "id": 515,
       "location": {
         "city": "Stráž pod Ralskem",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "22/12/2009",
@@ -12479,7 +12479,7 @@
       "id": 781,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "20/11/2005",
@@ -15711,7 +15711,7 @@
       "id": 983,
       "location": {
         "city": "",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "10/8/2003",
@@ -18957,7 +18957,7 @@
       "id": 1186,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "30/6/2001",
@@ -19261,7 +19261,7 @@
       "id": 1205,
       "location": {
         "city": "Mnichovo Hradiste",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "7/3/2001",
@@ -20380,7 +20380,7 @@
       "id": 1275,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "9/6/1999",
@@ -22250,7 +22250,7 @@
       "id": 1392,
       "location": {
         "city": "Prague",
-        "country": "Czech Republic"
+        "country": "czech-republic"
       },
       "momentEvent": {
         "dateTimeEvent": "25/10/1991",
@@ -24640,7 +24640,7 @@
     },
     {
       "id": 6,
-      "country": "czech republic",
+      "country": "czech-republic",
       "residents": 10524167
     },
     {
