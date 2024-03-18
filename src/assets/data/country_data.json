@@ -1,164 +1,138 @@
 [
     {
-        "austria": {
-            "id": 1,
-            "residents": 8922082
-        }
+        "id": 1,
+        "country": "austria",
+        "residents": 8922082
     },
     {
-        "belgium": {
-            "id": 2,
-            "residents": 11521238
-        }
+        "id": 2,
+        "country": "belgium",
+        "residents": 11521238
+    },
+    { 
+        "id": 3,
+        "country": "bulgaria",
+        "residents": 6885868
+
     },
     {
-        "bulgaria": {
-            "id": 3,
-            "residents": 6885868
-        }
+        "id": 4,
+        "country": "croatia",
+        "residents": 4060135
     },
     {
-        "croatia": {
-            "id": 4,
-            "residents": 4060135
-        }
+        "id": 5,
+        "country": "cyprus",
+        "residents": 1251488
     },
     {
-        "cyprus": {
-            "id": 5,
-            "residents": 1251488
-        }
+        "id": 6,
+        "country": "czech republic",
+        "residents": 10524167
     },
     {
-        "czechRepublic": {
-            "id": 6,
-            "residents": 10524167
-        }
+        "id": 7,
+        "country": "denmark",
+        "residents": 5854240
     },
     {
-        "denmark": {
-            "id": 7,
-            "residents": 5854240
-        }
+        "id": 8,
+        "country": "estonia",
+        "residents": 1328701
     },
     {
-        "estonia": {
-            "id": 8,
-            "residents": 1328701
-        }
+        "id": 9,
+        "country": "finland",
+        "residents": 5535992
     },
     {
-        "finland": {
-            "id": 9,
-            "residents": 5535992
-        }
+        "id": 10,
+        "country": "france",
+        "residents": 64531444
     },
     {
-        "france": {
-            "id": 10,
-            "residents": 64531444
-        }
+        "id": 11,
+        "country": "germany",
+        "residents": 83408554
     },
     {
-        "germany": {
-            "id": 11,
-            "residents": 83408554
-        }
+        "id": 12,
+        "country": "greece",
+        "residents": 10445365
     },
     {
-        "greece": {
-            "id": 12,
-            "residents": 10445365
-        }
+        "id": 13,
+        "country": "hungary",
+        "residents": 9709786
     },
     {
-        "hungary": {
-            "id": 13,
-            "residents": 9709786
-        }
+        "id": 14,
+        "country": "ireland",
+        "residents": 4986526
     },
     {
-        "ireland": {
-            "id": 14,
-            "residents": 4986526
-        }
+        "id": 15,
+        "country": "italy",
+        "residents": 59240329
     },
     {
-        "italy": {
-            "id": 15,
-            "residents": 59240329
-        }
+        "id": 16,
+        "country": "latvia",
+        "residents": 1873919
     },
     {
-        "latvia": {
-            "id": 16,
-            "residents": 1873919
-        }
+        "id": 17,
+        "country": "lithuania",
+        "residents": 2810761
     },
     {
-        "lithuania": {
-            "id": 17,
-            "residents": 2810761
-        }
+        "id": 18,
+        "country": "luxembourg",
+        "residents": 639321
     },
     {
-        "luxembourg": {
-            "id": 18,
-            "residents": 639321
-        }
+        "id": 19,
+        "country": "malta",
+        "residents": 526748
     },
     {
-        "malta": {
-            "id": 19,
-            "residents": 526748
-        }
+        "id": 20,
+        "country": "netherlands",
+        "residents": 17475415
     },
     {
-        "netherlands": {
-            "id": 20,
-            "residents": 17475415
-        }
+        "id": 21,
+        "country": "poland",
+        "residents": 38036118
     },
     {
-        "poland": {
-            "id": 21,
-            "residents": 38036118
-        }
+        "id": 22,
+        "country": "portugal",
+        "residents": 10290103
     },
     {
-        "portugal": {
-            "id": 22,
-            "residents": 10290103
-        }
+        "id": 23,
+        "country": "romania",
+        "residents": 19328560
     },
     {
-        "romania": {
-            "id": 23,
-            "residents": 19328560
-        }
+        "id": 24,
+        "country": "slovakia",
+        "residents": 5447622
     },
     {
-        "slovakia": {
-            "id": 24,
-            "residents": 5447622
-        }
+        "id": 25,
+        "country": "slovenia",
+        "residents": 2119410
     },
     {
-        "slovenia": {
-            "id": 25,
-            "residents": 2119410
-        }
+        "id": 26,
+        "country": "spain",
+        "residents": 47486935
     },
     {
-        "spain": {
-            "id": 26,
-            "residents": 47486935
-        }
-    },
-    {
-        "sweden": {
-            "id": 27,
-            "residents": 10467097
-        }
+        "id": 27,
+        "country": "sweden",
+        "residents": 10467097
     }
 ]
