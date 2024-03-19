@@ -136,19 +136,35 @@ fetch(ufoUrl)
         
         const slider = document.getElementById("myRange");
         const output = document.getElementById("demo");
-        output.innerHTML = slider.value;
+        output.innerHTML = slider.value; // Donnée affichée avant le clique
         
         const updateSlider = () => {
-            output.innerHTML = slider.value;
             const filteredData = updateData(slider.value);
             renderData(filteredData);
+
+
+            const sliderPosition = (slider.value - slider.min) / (slider.max - slider.min);
+            const sliderWidth = slider.getBoundingClientRect().width;
+            const newPosition = (sliderWidth * sliderPosition) - (output.offsetWidth / 2);
+            output.style.left = newPosition + 'px';
+        };
+
+        const displaySlider = () => {
+            output.innerHTML = slider.value;
+
+
+            const sliderPosition = (slider.value - slider.min) / (slider.max - slider.min);
+            const sliderWidth = slider.getBoundingClientRect().width;
+            const newPosition = (sliderWidth * sliderPosition) - (output.offsetWidth / 2);
+            output.style.left = newPosition + 'px';
         };
         
-        slider.addEventListener('change', updateSlider); // Utiliser un 'input' event pour juste changer l'affichage de la date à l'utilisateur
-        
-        // Initially render data for the default year
-        renderData(updateData(slider.value));
+        slider.addEventListener('input', displaySlider); // Utiliser un 'input' event pour juste changer l'affichage de la date à l'utilisateur
+        slider.addEventListener('change', updateSlider);
 
+        window.addEventListener('resize', displaySlider);
+        
+        renderData(updateData(slider.value));
 
     })
     .catch(error => console.error(`Une erreur s'est produite lors de la récupération du fichier JSON: ${error}`));
