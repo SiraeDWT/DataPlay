@@ -60,6 +60,14 @@ fetch(ufoUrl)
             }  
         }
 
+
+        const deactivateActiveButton = () => {
+            const activeButton = document.querySelector('.data__country.data__country--active');
+            if (activeButton) {
+                activeButton.classList.remove('data__country--active');
+            }
+        };
+
         // const countries = ['austria', 'belgium', 'bulgaria', 'croatia', 'cyprus', 'czech-republic', 'denmark', 'estonia', 'finland', 'france', 'germany', 'greece', 'hungary', 'ireland', 'italy', 'latvia', 'lithuania', 'luxembourg', 'malta', 'netherlands', 'poland', 'portugal', 'romania', 'slovakia', 'slovenia', 'spain', 'sweden'];
 
         let contentText = document.querySelector('.data__content');
@@ -72,6 +80,8 @@ fetch(ufoUrl)
             btnCountry.addEventListener('click', () => {
                 const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
                 const countryResidentsFilter = data.country.filter(entry => entry.residents && entry.country.toLowerCase().includes(country));
+
+                deactivateActiveButton();
 
                 let counts = {};
     
@@ -106,16 +116,19 @@ fetch(ufoUrl)
 
                 if (currentCountry === country) {
                     contentText.classList.remove('data__content--show');
+                    btnCountry.classList.remove('data__country--active');
                     currentCountry = null;
                 } else {
                     contentText.classList.add('data__content--show');
                     contentText.innerHTML = `
+                        <h2>${country.translate().firstLetterCapitalize()}</h2>
                         <p>${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
                         <p>${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
                         <p>${percentageCountry} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
                         <p>Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
                     `;
                     currentCountry = country;
+                    btnCountry.classList.add('data__country--active');
                 }
             });
         });
@@ -134,8 +147,8 @@ fetch(ufoUrl)
             console.log(filteredData);
         };
         
-        const slider = document.getElementById("myRange");
-        const output = document.getElementById("demo");
+        const slider = document.getElementById("range");
+        const output = document.getElementById("date");
         output.innerHTML = slider.value; // Donnée affichée avant le clique
         
         const updateSlider = () => {
@@ -186,3 +199,33 @@ fetch(ufoUrl)
 
 // Prendre le nombre d'habitant d'un pays et faire une stat de combien de % ont vu un ovni dans le pays
 // Prendre le nombre d'habitant total en Europe et faire une stat pour voir combien de % ont vu un ovni en Europe
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    let tooltip = document.getElementById('tooltip');
+    let buttons = document.getElementsByClassName('data__tooltip');
+
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('mouseover', function(event) {
+            tooltip.style.display = 'block';
+            // Modifier le texte de la tooltip ici
+            tooltip.innerHTML = "? Afficher"; // Par exemple
+        });
+
+        buttons[i].addEventListener('mousemove', function(event) {
+            updateTooltipPosition(event);
+        });
+
+        buttons[i].addEventListener('mouseout', function(event) {
+            tooltip.style.display = 'none';
+        });
+    }
+
+    function updateTooltipPosition(event) {
+        let mouseX = event.clientX;
+        let mouseY = event.clientY;
+        tooltip.style.left = (mouseX + 10) + 'px';
+        tooltip.style.top = (mouseY + 10) + 'px';
+    }
+});
