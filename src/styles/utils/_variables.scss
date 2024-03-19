@@ -1,5 +1,29 @@
-$c-bg: #efefef;
-$c-alt: #e41612;
-$c-text: #444;
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
-$size-text: 18px;
+$p-mini-size: 14px;
+$p-size: 20px; /* Rapport 1.414 */
+$h3-size: 28px;
+$h2-size: 40px;
+$h1-size: 57px;
+$h1-ultrasize: 80px;
+
+$space-p: 40px;
+$space-h3: 56px;
+$space-h2: 80px;
+$space-h1: 114px;
+$space-h1-ultrasize: 160px;
+
+$main-font: 'Pixelify Sans', sans-serif;
+
+$line-height: 140%;
+$inter-p: 20px;
+
+$color-dark-blue: #1e2046;
+$color-yellow: #FCEE09;
+$color-yellow-lighty: #fdf466;
+$color-red: #ff6666;
+$color-red-darky: #ff4646;
+
+$color-grey: #050A0E;
+$color-grey-opacity: #050A0ECC;
+$color-white: #F1F1F1;
