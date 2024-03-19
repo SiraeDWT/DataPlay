@@ -47,4 +47,35 @@ body {
             display: block;
         }
     }
+
+    &__slider{
+        margin-top: 250px;
+
+        .slider{
+            width: 100%;
+
+            // &::-webkit-slider-runnable-track{
+            //     background: #ccc;
+            //     border-radius: 5px; /* Bord arrondi */
+            // }
+        
+            // /* Couleur de la "bulle" */
+            // &::-webkit-slider-thumb{
+            //     background: #ff0000; /* Fond rouge */
+            //     border: 2px solid #ff0000; /* Bordure rouge */
+            //     border-radius: 0; /* Pas de bord arrondi */
+            //     height: 20px;
+            //     width: 20px;
+            //     cursor: pointer;
+            //     -webkit-appearance: none;
+            //     margin-top: -8px; /* Vous pouvez ajuster selon votre besoin */
+            // }
+        
+            // /* Couleur de la "bulle" lorsqu'elle est survolée */
+            // &::-webkit-slider-thumb:hover{
+            //     background: #ff6666; /* Fond rouge clair lorsqu'il est survolé */
+            // }
+        }
+        
+    }
 }
