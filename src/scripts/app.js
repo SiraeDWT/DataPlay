@@ -118,7 +118,38 @@ fetch(ufoUrl)
                     currentCountry = country;
                 }
             });
-        }); 
+        });
+
+
+
+        const updateData = (year) => {
+            const filteredData = data.ufo.filter(entry => {
+                let fullYear = entry.momentEvent.dateTimeEvent.slice(-4);
+                return fullYear == year;
+            });
+            return filteredData;
+        };
+        
+        const renderData = (filteredData) => {
+            console.log(filteredData);
+        };
+        
+        const slider = document.getElementById("myRange");
+        const output = document.getElementById("demo");
+        output.innerHTML = slider.value;
+        
+        const updateSlider = () => {
+            output.innerHTML = slider.value;
+            const filteredData = updateData(slider.value);
+            renderData(filteredData);
+        };
+        
+        slider.addEventListener('change', updateSlider); // Utiliser un 'input' event pour juste changer l'affichage de la date à l'utilisateur
+        
+        // Initially render data for the default year
+        renderData(updateData(slider.value));
+
+
     })
     .catch(error => console.error(`Une erreur s'est produite lors de la récupération du fichier JSON: ${error}`));
 
