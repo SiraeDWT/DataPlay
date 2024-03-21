@@ -68,7 +68,6 @@ fetch(ufoUrl)
             }
         };
 
-        // const countries = ['austria', 'belgium', 'bulgaria', 'croatia', 'cyprus', 'czech-republic', 'denmark', 'estonia', 'finland', 'france', 'germany', 'greece', 'hungary', 'ireland', 'italy', 'latvia', 'lithuania', 'luxembourg', 'malta', 'netherlands', 'poland', 'portugal', 'romania', 'slovakia', 'slovenia', 'spain', 'sweden'];
 
         let contentText = document.querySelector('.data__content');
         let currentCountry = null;
@@ -77,60 +76,164 @@ fetch(ufoUrl)
             let btnCountry = document.getElementById(country);
             
 
-            btnCountry.addEventListener('click', () => {
-                const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
-                const countryResidentsFilter = data.country.filter(entry => entry.residents && entry.country.toLowerCase().includes(country));
+            const selectElement = document.getElementById('select-data');
 
-                unselectCountry();
+            selectElement.addEventListener('change', function() {
+                let slider = document.querySelector('.data__slider');
+                const selectedValue = selectElement.value;
 
-                let counts = {};
-    
-                for (let i = 0; i < countryFilter.length; i++) {
-                    let city = countryFilter[i].location.city;
-                    if (counts[city] === undefined) {
-                        counts[city] = 1;
-                    } else {
-                        counts[city]++;
-                    }
-                }
-    
-                let mostFrequentCity;
-                let maxCountCity = 0;
-    
-                for (let city in counts) {
-                    if (counts[city] > maxCountCity) {
-                        maxCountCity = counts[city];
-                        mostFrequentCity = city;
-                    }
-                }
-    
-                if (mostFrequentCity === "") {
-                    mostFrequentCity = "lieu inconnu";
-                }
-    
-    
-                let percentageCity = ((maxCountCity / countryFilter.length) * 100).toFixed(2);
-                let percentageCountry = ((countryFilter.length / data.ufo.length) * 100).toFixed(2);
-                let percentageResidentsByCountry = ((countryFilter.length / countryResidentsFilter[0].residents) * 100).toFixed(4);
-    
+                if (selectedValue === 'dates') {
+                    slider.classList.add('data__slider--show');
 
-                if (currentCountry === country) {
-                    contentText.classList.remove('data__content--show');
-                    btnCountry.classList.remove('data__country--active');
-                    currentCountry = null;
-                } else {
-                    contentText.classList.add('data__content--show');
-                    contentText.innerHTML = `
-                        <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
-                        <p class="data__text text">${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
-                        <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
-                        <p class="data__text text">${percentageCountry} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
-                        <p class="data__text text">Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
-                    `;
-                    currentCountry = country;
-                    btnCountry.classList.add('data__country--active');
+                    btnCountry.addEventListener('click', () => {
+                        const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
+                        const dateFilter = data.ufo.filter(entry => {
+                            const slider = document.getElementById("range");
+                            let year = entry.momentEvent.dateTimeEvent.split('/')[2];
+                            return year === slider.value;
+                        });
+        
+        
+                        const slider = document.getElementById("range");
+                        const output = document.getElementById("date");
+                        output.innerHTML = slider.value;
+        
+                        let dataByDate = [];
+        
+                        for (let i = 0; i < countryFilter.length; i++) {
+                            if (countryFilter[i].momentEvent.dateTimeEvent.slice(-4) == slider.value) {
+                                dataByDate.push(countryFilter[i])
+                            }
+                        }
+                        
+        
+                        unselectCountry();
+        
+                        let counts = {};
+            
+                        for (let i = 0; i < dataByDate.length; i++) {
+                            let city = dataByDate[i].location.city;
+                            if (counts[city] === undefined) {
+                                counts[city] = 1;
+                            } else {
+                                counts[city]++;
+                            }
+                        }
+            
+                        let mostFrequentCity;
+                        let maxCountCity = 0;
+            
+                        for (let city in counts) {
+                            if (counts[city] > maxCountCity) {
+                                maxCountCity = counts[city];
+                                mostFrequentCity = city;
+                            }
+                        }
+            
+                        if (mostFrequentCity === "") {
+                            mostFrequentCity = "lieu inconnu";
+                        }
+            
+            
+                        
+        
+                        
+                        let percentageCity = ((maxCountCity / dataByDate.length) * 100).toFixed(2);
+                        let percentageCountry = ((dataByDate.length / dateFilter.length) * 100).toFixed(2);
+            
+        
+                        
+        
+                        if (currentCountry === country) {
+                            contentText.classList.remove('data__content--show');
+                            btnCountry.classList.remove('data__country--active');
+                            currentCountry = null;
+                        } else {
+                            contentText.classList.add('data__content--show');
+        
+                            if (dataByDate.length > 0) {
+                                contentText.innerHTML = `
+                                    <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (${slider.value})</h2>
+                                    <p class="data__text text">${dataByDate.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${dateFilter.length} cas recensés en Europe en ${slider.value}.</p>
+                                    <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${dataByDate.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays en ${slider.value}.</p>
+                                    <p class="data__text text">${percentageCountry} % des cas en Europe ont eu lieu en ${country.translate().firstLetterCapitalize()} en ${slider.value}.</p>
+                                `;
+        
+                                currentCountry = country;
+                                btnCountry.classList.add('data__country--active');
+                            } else {
+                                contentText.innerHTML = `
+                                    <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (${slider.value})</h2>
+                                    <p class="data__text text">Il n'y a eu aucun cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} en ${slider.value}.</p>
+                                `;
+                                currentCountry = country;
+                                btnCountry.classList.add('data__country--active');
+                            }
+                        }
+                    });
+
+                } else if (selectedValue === 'shapes') {
+                    slider.classList.remove('data__slider--show');
+
+                } else if (selectedValue === 'nothing') { //! TODO: HERE !!!
+                    slider.classList.remove('data__slider--show');
+
+                    btnCountry.addEventListener('click', () => {
+                        const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
+                        const countryResidentsFilter = data.country.filter(entry => entry.residents && entry.country.toLowerCase().includes(country));
+        
+                        unselectCountry();
+        
+                        let counts = {};
+            
+                        for (let i = 0; i < countryFilter.length; i++) {
+                            let city = countryFilter[i].location.city;
+                            if (counts[city] === undefined) {
+                                counts[city] = 1;
+                            } else {
+                                counts[city]++;
+                            }
+                        }
+            
+                        let mostFrequentCity;
+                        let maxCountCity = 0;
+            
+                        for (let city in counts) {
+                            if (counts[city] > maxCountCity) {
+                                maxCountCity = counts[city];
+                                mostFrequentCity = city;
+                            }
+                        }
+            
+                        if (mostFrequentCity === "") {
+                            mostFrequentCity = "lieu inconnu";
+                        }
+            
+            
+                        let percentageCity = ((maxCountCity / countryFilter.length) * 100).toFixed(2);
+                        let percentageCountry = ((countryFilter.length / data.ufo.length) * 100).toFixed(2);
+                        let percentageResidentsByCountry = ((countryFilter.length / countryResidentsFilter[0].residents) * 100).toFixed(4);
+            
+        
+                        if (currentCountry === country) {
+                            contentText.classList.remove('data__content--show');
+                            btnCountry.classList.remove('data__country--active');
+                            currentCountry = null;
+                        } else {
+                            contentText.classList.add('data__content--show');
+                            contentText.innerHTML = `
+                                <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
+                                <p class="data__text text">${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
+                                <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
+                                <p class="data__text text">${percentageCountry} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
+                                <p class="data__text text">Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
+                            `;
+                            currentCountry = country;
+                            btnCountry.classList.add('data__country--active');
+                        }
+                    });
                 }
-            });
+            });  
         });
 
 
@@ -144,12 +247,13 @@ fetch(ufoUrl)
         };
         
         const renderData = (filteredData) => {
+            return;
             console.log(filteredData);
         };
         
         const slider = document.getElementById("range");
         const output = document.getElementById("date");
-        output.innerHTML = slider.value; // Donnée affichée avant le clique
+        output.innerHTML = slider.value;
         
         const updateSlider = () => {
             const filteredData = updateData(slider.value);
@@ -172,7 +276,7 @@ fetch(ufoUrl)
             output.style.left = newPosition + 'px';
         };
         
-        slider.addEventListener('input', displaySlider); // Utiliser un 'input' event pour juste changer l'affichage de la date à l'utilisateur
+        slider.addEventListener('input', displaySlider);
         slider.addEventListener('change', updateSlider);
 
         window.addEventListener('resize', displaySlider);
@@ -183,26 +287,8 @@ fetch(ufoUrl)
     .catch(error => console.error(`Une erreur s'est produite lors de la récupération du fichier JSON: ${error}`));
 
 
-//! Lieux inconnus pour: France, Malte, Pologne, Portugal.
-
-//TODO: RECUPERER LE PAYS AVEC LE PLUS HAUT TAUX DE CAS / Zapper les villes inconnues ? / Calculer la proba par habitant de voir un ovni dans un pays (exemple: en Belgique, un habitant à xx.xx % de proba de voir un ovni (sur base du nombre de cas et du nombre d'habitants))   
-
-//? Afficher la ville dans laquelle on a le plus de proba de voir un ovni
-
-// -----
-
-// Réfléchir à la probabilité de voir quelle forme dans quel pays. (Exemple: En Belgique, on a 15 % de proba de voir triangle, 12 % de voir oval, ... DONC celui qui a le plus de % est celui avec la plus haute proba de rencontre. Exemple: En Belgique, l'ovni le plus probable d'observer est le triangle avec 15 %.)
-// Faire une moyenne et dire combien de % de proba on a de voir un ovni dans un pays. (Exemple: L'allemagne a 36 % de proba de rencontre d'ovni)
-
-// Fun Fact: Sur X ovnis recensé en Europe, X ovnis ont été aperçu entre telle et telle date
-// Fun Fact: Selon les observations, il est plus probable d'apercevoir un ovni entre telle et telle heure
-
-// Prendre le nombre d'habitant d'un pays et faire une stat de combien de % ont vu un ovni dans le pays
-// Prendre le nombre d'habitant total en Europe et faire une stat pour voir combien de % ont vu un ovni en Europe
-
 
 function getCountryId(event) {
-    // Si pas d'ID dans polygon, prendre l'ID du parent au-dessus du g
     let countryId = event.target.id;
 
     if (!countryId) {
@@ -242,30 +328,3 @@ function updateTooltipPosition(event) {
     tooltip.style.left = (mouseX + 15) + 'px';
     tooltip.style.top = (mouseY - 25) + 'px';
 }
-
-
-
-
-
-// Select tri
-const selectElement = document.getElementById('select-data');
-
-selectElement.addEventListener('change', function() {
-    let slider = document.querySelector('.data__slider');
-    const selectedValue = selectElement.value;
-
-    if (selectedValue === 'dates') {
-        slider.classList.add('data__slider--show');
-    } else if (selectedValue === 'shapes') {
-        slider.classList.remove('data__slider--show');
-    } else{
-        slider.classList.remove('data__slider--show');
-    }
-});
-
-
-
-
-// SI j'ai la valeur du select qui est "nothing", on garde les datas globales;
-// SI j'ai la valeur du select qui est "dates", on affiche les datas en fonction de la date sélectionnée;
-// SI j'ai la valeur du select qui est "shapes", on affiche les datas en fonction de la forme sélectionnée;
