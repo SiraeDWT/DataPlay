@@ -22,6 +22,8 @@ html, body{
 
 .text{
     line-height: $line-height;
+    font-family: $text-font;
+    color: $color-yellow;
 }
 
 .wrapper{
@@ -102,9 +104,50 @@ html, body{
 
     &__map{
         min-width: 25%;
-        width: 33%;
-        max-width: 35%;
+        width: 35%;
+        max-width: 60%;
         margin: 0 auto;
+
+        box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
+        padding: 20px;
+        position: relative;
+    }
+
+    &__zoom{
+        position: absolute;
+        top: 44px; left: 44px;
+
+        .zoom__el{
+            width: 22px;
+            height: 22px;
+            background: $color-dark-blue;
+            box-shadow: -3px 0 0 0 $color-yellow, 3px 0 0 0 $color-yellow, 0 -3px 0 0 $color-yellow, 0 3px 0 0 $color-yellow;
+            border: none;
+            margin: 0 20px 0 0;
+            cursor: pointer;
+
+            transition: .1s ease-in-out;
+
+            &:hover{
+                background-color: $color-yellow;
+            }
+
+            &:active{
+                -webkit-transform: scale(1.1);
+                transform: scale(1.1);
+            }
+
+            &--random{
+                width: 100%;
+                height: 100%;
+                margin-top: 20px;
+                font-size: $p-size;
+
+                &:hover{
+                    color: $color-dark-blue;
+                }
+            }
+        }
     }
 
     &__country{
@@ -194,6 +237,7 @@ html, body{
         padding: 14px 20px;
         box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
         font-size: $p-size;
+        margin-top: $space-p;
 
         display: none;
 
