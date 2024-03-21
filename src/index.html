@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <title>DataPlay</title>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,8 +27,12 @@
 </head>
 <body class="body">
     <main class="wrapper">
-        <h1 class="title">P.D.N.I.</h1>
+        <section class="presentation">
+            <h1 class="presentation__title title text">P.D.N.I.</h1>
+        </section>
+        
         <section class="data">
+            <button class="data__btn data__back">Précédent</button>
             
             <div class="data__app">
                 <div class="data__map">
@@ -108,6 +112,16 @@
                 </div>
                 
                 <div class="data__allcontent">
+                    <div class="data__selector">
+                      <label for="select-data">Filtrer par:</label>
+                      <select id="select-data" class="data__select">
+                          <option value="nothing"></option>
+                          <option value="dates">Date</option>
+                          <option value="shapes">Formes</option>
+                      </select>
+                    </div>
+                
+                  
                     <div class="data__slider">
                         <input type="range" min="1906" max="2021" value="1906" class="data__input" id="range">
                         <small id="date" class="data__date"></small>
@@ -115,7 +129,7 @@
                     <div class="data__content"></div>
                     <div class="data__buttons">
                         <button class="data__btn">Fun Fact</button>
-                        <button class="data__btn">Trouver un OVNI</button>
+                        <button class="data__btn">Aléatoire</button>
                     </div>
                 </div>
                 
