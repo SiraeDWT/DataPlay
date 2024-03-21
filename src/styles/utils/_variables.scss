@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 $p-mini-size: 14px;
 $p-size: 20px; /* Rapport 1.414 */
@@ -14,8 +15,10 @@ $space-h1: 114px;
 $space-h1-ultrasize: 160px;
 
 $main-font: 'Pixelify Sans', sans-serif;
+$title-font: "Press Start 2P", system-ui;
+$text-font: "VT323", monospace;
 
-$line-height: 140%;
+$line-height: 150%;
 $inter-p: 20px;
 
 $color-dark-blue: #1e2046;
