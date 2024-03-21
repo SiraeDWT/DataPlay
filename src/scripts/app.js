@@ -121,11 +121,11 @@ fetch(ufoUrl)
                 } else {
                     contentText.classList.add('data__content--show');
                     contentText.innerHTML = `
-                        <h2>${country.translate().firstLetterCapitalize()}</h2>
-                        <p>${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
-                        <p>${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
-                        <p>${percentageCountry} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
-                        <p>Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
+                        <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
+                        <p class="data__text text">${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
+                        <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
+                        <p class="data__text text">${percentageCountry} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
+                        <p class="data__text text">Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
                     `;
                     currentCountry = country;
                     btnCountry.classList.add('data__country--active');
@@ -204,20 +204,26 @@ fetch(ufoUrl)
 
 document.addEventListener("DOMContentLoaded", function(event) {
     let tooltip = document.getElementById('tooltip');
-    let buttons = document.getElementsByClassName('data__tooltip');
+    let countries = document.getElementsByClassName('data__tooltip');
 
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].addEventListener('mouseover', function(event) {
+    function getCountryId(event) {
+        let countryId = event.target.id;
+        return countryId;
+    }
+
+    for (let i = 0; i < countries.length; i++) {
+        countries[i].addEventListener('mouseover', function(event) {
             tooltip.style.display = 'block';
-            // Modifier le texte de la tooltip ici
-            tooltip.innerHTML = "? Afficher"; // Par exemple
+            tooltip.innerHTML = `${getCountryId(event).translate()}`;
         });
 
-        buttons[i].addEventListener('mousemove', function(event) {
+        
+
+        countries[i].addEventListener('mousemove', function(event) {
             updateTooltipPosition(event);
         });
 
-        buttons[i].addEventListener('mouseout', function(event) {
+        countries[i].addEventListener('mouseout', function(event) {
             tooltip.style.display = 'none';
         });
     }
@@ -225,7 +231,32 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function updateTooltipPosition(event) {
         let mouseX = event.clientX;
         let mouseY = event.clientY;
-        tooltip.style.left = (mouseX + 10) + 'px';
-        tooltip.style.top = (mouseY + 10) + 'px';
+        tooltip.style.left = (mouseX + 15) + 'px';
+        tooltip.style.top = (mouseY - 25) + 'px';
     }
 });
+
+
+
+
+const selectElement = document.getElementById('select-data');
+
+selectElement.addEventListener('change', function() {
+    let slider = document.querySelector('.data__slider');
+    const selectedValue = selectElement.value;
+
+    if (selectedValue === 'dates') {
+        slider.classList.add('data__slider--show');
+    } else if (selectedValue === 'shapes') {
+        slider.classList.remove('data__slider--show');
+    } else{
+        slider.classList.remove('data__slider--show');
+    }
+});
+
+
+
+
+// SI j'ai la valeur du select qui est "nothing", on garde les datas globales;
+// SI j'ai la valeur du select qui est "dates", on affiche les datas en fonction de la date sélectionnée;
+// SI j'ai la valeur du select qui est "shapes", on affiche les datas en fonction de la forme sélectionnée;
