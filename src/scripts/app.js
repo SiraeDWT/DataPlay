@@ -61,7 +61,7 @@ fetch(ufoUrl)
         }
 
 
-        const deactivateActiveButton = () => {
+        const unselectCountry = () => {
             const activeButton = document.querySelector('.data__country.data__country--active');
             if (activeButton) {
                 activeButton.classList.remove('data__country--active');
@@ -81,7 +81,7 @@ fetch(ufoUrl)
                 const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
                 const countryResidentsFilter = data.country.filter(entry => entry.residents && entry.country.toLowerCase().includes(country));
 
-                deactivateActiveButton();
+                unselectCountry();
 
                 let counts = {};
     
@@ -201,44 +201,53 @@ fetch(ufoUrl)
 // Prendre le nombre d'habitant total en Europe et faire une stat pour voir combien de % ont vu un ovni en Europe
 
 
+function getCountryId(event) {
+    // Si pas d'ID dans polygon, prendre l'ID du parent au-dessus du g
+    let countryId = event.target.id;
 
-document.addEventListener("DOMContentLoaded", function(event) {
-    let tooltip = document.getElementById('tooltip');
-    let countries = document.getElementsByClassName('data__tooltip');
-
-    function getCountryId(event) {
-        let countryId = event.target.id;
+    if (!countryId) {
+        let parent = event.target.parentElement;
+        if (parent && parent.id) {
+            return parent.id;
+        } else {
+            return null;
+        }
+    } else {
         return countryId;
     }
-
-    for (let i = 0; i < countries.length; i++) {
-        countries[i].addEventListener('mouseover', function(event) {
-            tooltip.style.display = 'block';
-            tooltip.innerHTML = `${getCountryId(event).translate()}`;
-        });
-
-        
-
-        countries[i].addEventListener('mousemove', function(event) {
-            updateTooltipPosition(event);
-        });
-
-        countries[i].addEventListener('mouseout', function(event) {
-            tooltip.style.display = 'none';
-        });
-    }
-
-    function updateTooltipPosition(event) {
-        let mouseX = event.clientX;
-        let mouseY = event.clientY;
-        tooltip.style.left = (mouseX + 15) + 'px';
-        tooltip.style.top = (mouseY - 25) + 'px';
-    }
-});
+}
 
 
+let tooltip = document.getElementById('tooltip');
+let countries = document.getElementsByClassName('data__tooltip');
+
+for (let i = 0; i < countries.length; i++) {
+    countries[i].addEventListener('mouseover', function(event) {
+        tooltip.style.display = 'block';
+        tooltip.innerHTML = `${getCountryId(event).translate().firstLetterCapitalize()}`;  
+    });
+
+    countries[i].addEventListener('mousemove', function(event) {
+        updateTooltipPosition(event);
+    });
+
+    countries[i].addEventListener('mouseout', function(event) {
+        tooltip.style.display = 'none';
+    });
+}
+
+function updateTooltipPosition(event) {
+    let mouseX = event.clientX;
+    let mouseY = event.clientY;
+    tooltip.style.left = (mouseX + 15) + 'px';
+    tooltip.style.top = (mouseY - 25) + 'px';
+}
 
 
+
+
+
+// Select tri
 const selectElement = document.getElementById('select-data');
 
 selectElement.addEventListener('change', function() {
