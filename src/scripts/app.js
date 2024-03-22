@@ -69,21 +69,23 @@ fetch(ufoUrl)
         };
 
 
-        let contentText = document.querySelector('.data__content');
-        let currentCountry = null;
+        
 
         countries.forEach(country => {
             let btnCountry = document.getElementById(country);
             
 
-            const selectElement = document.getElementById('select-data');
+            const dateCheckbox = document.getElementById('date-checkbox');
 
-            selectElement.addEventListener('change', function() {
+            dateCheckbox.addEventListener('change', function() {
                 let slider = document.querySelector('.data__slider');
-                const selectedValue = selectElement.value;
+                
 
-                if (selectedValue === 'dates') {
+                if (dateCheckbox.checked) {
                     slider.classList.add('data__slider--show');
+
+                    let contentText = document.querySelector('.data__content');
+                    let currentCountry = null;
 
                     btnCountry.addEventListener('click', () => {
                         const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
@@ -172,11 +174,11 @@ fetch(ufoUrl)
                         }
                     });
 
-                } else if (selectedValue === 'shapes') {
+                } else if (!dateCheckbox.checked) {
                     slider.classList.remove('data__slider--show');
 
-                } else if (selectedValue === 'nothing') { //! TODO: HERE !!!
-                    slider.classList.remove('data__slider--show');
+                    let contentText = document.querySelector('.data__content');
+                    let currentCountry = null;
 
                     btnCountry.addEventListener('click', () => {
                         const countryFilter = data.ufo.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(country));
