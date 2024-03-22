@@ -85,6 +85,7 @@ fetch(ufoUrl)
                     slider.classList.add('data__slider--show');
 
                     let contentText = document.querySelector('.data__content');
+                    let probaArea = document.querySelector('.data__list');
                     let currentCountry = null;
 
                     btnCountry.addEventListener('click', () => {
@@ -148,10 +149,12 @@ fetch(ufoUrl)
         
                         if (currentCountry === country) {
                             contentText.classList.remove('data__content--show');
+                            probaArea.classList.remove('data__list--show');
                             btnCountry.classList.remove('data__country--active');
                             currentCountry = null;
                         } else {
                             contentText.classList.add('data__content--show');
+                            probaArea.classList.add('data__list--show');
         
                             if (dataByDate.length > 0) {
                                 contentText.innerHTML = `
@@ -159,6 +162,12 @@ fetch(ufoUrl)
                                     <p class="data__text text">${dataByDate.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${dateFilter.length} cas recensés en Europe en ${slider.value}.</p>
                                     <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${dataByDate.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays en ${slider.value}.</p>
                                     <p class="data__text text">${percentageCountry} % des cas en Europe ont eu lieu en ${country.translate().firstLetterCapitalize()} en ${slider.value}.</p>
+                                `;
+
+                                probaArea.innerHTML = `
+                                    <li class="data__el"><span class="data__important">${dataByDate.length}</span> <span>OVNI</span></li>
+                                    <li class="data__el"><span class="data__important">${mostFrequentCity}</span> <span>plus de cas</span></li>
+                                    <li class="data__el"><span class="data__important">${percentageCountry} %</span> <span>de l'Europe</span></li>
                                 `;
         
                                 currentCountry = country;
@@ -168,6 +177,7 @@ fetch(ufoUrl)
                                     <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (${slider.value})</h2>
                                     <p class="data__text text">Il n'y a eu aucun cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} en ${slider.value}.</p>
                                 `;
+
                                 currentCountry = country;
                                 btnCountry.classList.add('data__country--active');
                             }
@@ -178,6 +188,7 @@ fetch(ufoUrl)
                     slider.classList.remove('data__slider--show');
 
                     let contentText = document.querySelector('.data__content');
+                    let probaArea = document.querySelector('.data__list');
                     let currentCountry = null;
 
                     btnCountry.addEventListener('click', () => {
@@ -219,16 +230,25 @@ fetch(ufoUrl)
         
                         if (currentCountry === country) {
                             contentText.classList.remove('data__content--show');
+                            probaArea.classList.remove('data__list--show');
                             btnCountry.classList.remove('data__country--active');
                             currentCountry = null;
                         } else {
                             contentText.classList.add('data__content--show');
+                            probaArea.classList.add('data__list--show');
                             contentText.innerHTML = `
                                 <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
                                 <p class="data__text text">${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
                                 <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays.</p>
                                 <p class="data__text text">${percentageCountry} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
                                 <p class="data__text text">Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
+                            `;
+
+                            probaArea.innerHTML = `
+                                <li class="data__el"><span class="data__important">${countryFilter.length}</span> <span>OVNI</span></li>
+                                <li class="data__el"><span class="data__important">${mostFrequentCity}</span> <span>plus de cas</span></li>
+                                <li class="data__el"><span class="data__important">${percentageCountry} %</span> <span>de l'Europe</span></li>
+                                <li class="data__el"><span class="data__important">${percentageResidentsByCountry} %</span> <span>rencontre</span></li>
                             `;
                             currentCountry = country;
                             btnCountry.classList.add('data__country--active');
