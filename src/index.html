@@ -123,15 +123,11 @@
                 
                 <div class="data__allcontent">
                     <div class="data__selector">
-                      <label for="select-data">Filtrer par:</label>
-                      <select id="select-data" class="data__select">
-                          <option value="nothing"></option>
-                          <option value="dates">Date</option>
-                          <option value="shapes">Formes</option>
-                      </select>
+                        <label for="select-data">Date</label>
+                        <input type="checkbox" name="date-checkbox" id="date-checkbox" class="data__checkbox">
                     </div>
+              
                 
-                  
                     <div class="data__slider">
                         <input type="range" min="1906" max="2021" value="1906" class="data__input" id="range">
                         <small id="date" class="data__date"></small>
@@ -142,10 +138,13 @@
                         <!-- <button class="data__btn">Aléatoire</button> -->
                     </div>
                 </div>
+
+
+                
                 
             </div>
 
-            <div class="tooltip" id="tooltip">Nom de votre bouton</div>
+            <div class="tooltip" id="tooltip">Pays</div>
         </section>
     </main>
 </body>
