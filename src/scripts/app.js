@@ -443,9 +443,6 @@ btnFunfact.addEventListener('click', () => {
 
 
 // MAP
-
-
-
 let scale = 1;
 let panning = false;
 let pointX = 0;
@@ -495,15 +492,14 @@ zoom.addEventListener('wheel', function (e) {
 })
 
 
-//btn map
-//variables
+
 let btnReposition = document.querySelector('#btn-center');
 let btnPlus = document.querySelector('#btn-plus');
 let btnMoins = document.querySelector('#btn-minus');
 let zoomPos = 1;
 let i = 0.2;
 
-//btn reset position
+
 btnReposition.addEventListener('click', reposition);
 
 function reposition() {
@@ -514,7 +510,7 @@ function reposition() {
     zoom.style.transition = "0.5s";
 }
 
-//btn plus
+
 btnPlus.addEventListener('click', zoomIn);
 
 function zoomIn(){
@@ -526,7 +522,7 @@ function zoomIn(){
     zoomPos = zoomPos + i;
 }
 
-//btn moins
+
 btnMoins.addEventListener('click', zoomOut);
 
 function zoomOut(){
