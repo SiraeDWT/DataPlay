@@ -24,6 +24,11 @@ html, body{
     line-height: $line-height;
     font-family: $text-font;
     color: $color-yellow;
+    margin-bottom: $inter-p;
+
+    &--last{
+        margin-bottom: 0;
+    }
 }
 
 .wrapper{
@@ -31,21 +36,82 @@ html, body{
     margin: 0 auto;
 }
 
-.title{
-    font-family: $title-font;
-    font-weight: 500;
-    font-size: $h1-size;
-    color: $color-yellow;
-    margin: $space-p 0 0;
-}
+// .title{
+//     font-family: $title-font;
+//     font-weight: 500;
+//     font-size: $h1-size;
+//     color: $color-yellow;
+//     margin: $space-p 0 0;
+// }
 
 .presentation{
+    width: 75%;
+    margin: 0 auto;
     display: none;
+
+    // &--hide{
+    //     display: none;
+    // }
+
+    &__content{
+        margin-top: $space-h1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__title{
+        font-family: $title-font;
+        font-weight: 500;
+        font-size: $h1-size;
+        color: $color-yellow;
+        margin: $space-p 0 $space-h3;
+    }
+
+    &__text{
+        font-family: $text-font;
+        font-size: $h3-size;
+        color: $color-yellow;
+    }
+
+    &__btn{
+        cursor: pointer;
+        border: none;
+        box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
+        padding: $p-mini-size $p-size;
+        background-color: $color-dark-blue;
+        font-family: $main-font;
+        font-size: $p-size;
+        color: $color-yellow;
+        margin: $space-h2 0 0 0;
+        transition: .1s ease-in-out;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover{
+            background-color: $color-yellow;
+            color: $color-dark-blue;
+        }
+
+        &:active{
+            transform: scale(1.1);
+        }
+    }
+    
 }
 
 .data{
     font-family: $main-font;
     color: $color-white;
+
+    // display: none;
+
+    // &--show{
+    //     display: block;
+    // }
 
     &__slider{
         // display: none;
@@ -181,6 +247,7 @@ html, body{
     &__allcontent{
         width: 45%;
         // height: 50%;
+        position: relative;
     }
 
     &__inputs{
@@ -238,10 +305,8 @@ html, body{
     }
 
     &__content{
-        // padding: 14px 20px;
-        // box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
         font-size: $p-size;
-        // margin-top: $space-p;
+        margin-top: $space-h1;
 
         display: none;
 
@@ -251,7 +316,7 @@ html, body{
     }
 
     &__list{
-        margin: $space-h1 0;
+        margin: $space-p 0;
         padding: 0;
         list-style: none;
         display: none;
@@ -269,10 +334,6 @@ html, body{
         justify-content: center;
         text-align: center;
         gap: calc($space-p/4);
-        // box-shadow: -3px 0 0 0 $color-white, 3px 0 0 0 $color-white, 0 -3px 0 0 $color-white, 0 3px 0 0 $color-white;
-        // width: 200px;
-        // height: 200px;
-        // padding: calc($space-p/4);
     }
 
     &__important{
@@ -297,43 +358,52 @@ html, body{
         width: 10px;
 
         &--back{
-            margin-right: 20px;
-            width: 20px;
+            // margin-right: 20px;
+            width: 40px;
         }
     }
 
-    // &__btn{
-    //     cursor: pointer;
-    //     border: none;
-    //     box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
-    //     padding: $p-mini-size $p-size;
-    //     background-color: $color-dark-blue;
-    //     font-family: $main-font;
-    //     font-size: $p-size;
-    //     color: $color-yellow;
-    //     margin: $space-h1 0 0 0;
-    //     transition: .1s ease-in-out;
+    &__butn{
+        cursor: pointer;
+        border: none;
+        // box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
+        // padding: $p-mini-size $p-size;
+        background-color: $color-dark-blue;
+        font-family: $main-font;
+        font-size: $p-size;
+        color: $color-yellow;
+        transition: .1s ease-in-out;
 
-    //     display: flex;
-    //     justify-content: center;
-    //     align-items: center;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
 
-    //     &:hover{
-    //         background-color: $color-yellow;
-    //         color: $color-dark-blue;
-    //     }
+        // &:hover{
+        //     background-color: $color-yellow;
+        //     color: $color-dark-blue;
+        // }
 
-    //     &:active{
-    //         transform: scale(1.1);
-    //     }
-    // }
+        &:active{
+            transform: scale(1.1);
+        }
+    }
 
     &__back{
         margin-top: $space-p;
+        position: fixed;
+        top: -30px;
+        left: 15px;
+        // box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
+        // border: none;
+        // background-color: $color-dark-blue;
     }
 }
 
 .funfact{
+    position: absolute;
+    bottom: 0; right: 25%; left: 0;
+
+
     &__btn{
         cursor: pointer;
         border: none;
@@ -343,7 +413,7 @@ html, body{
         font-family: $main-font;
         font-size: $p-size;
         color: $color-yellow;
-        margin: $space-h1 0 0 0;
+        margin: $space-p 0 0 0;
         transition: .1s ease-in-out;
 
         display: flex;
