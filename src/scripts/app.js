@@ -1,5 +1,7 @@
 "use strict";
 
+import { gsap } from "gsap";
+
 String.prototype.firstLetterCapitalize = function() {
     return this.replace(/^./, this[0].toUpperCase());
 };
@@ -433,3 +435,105 @@ btnFunfact.addEventListener('click', () => {
     `;
     previousFunfact = randomFunfact;
 });
+
+
+
+
+
+
+
+// MAP
+
+
+
+let scale = 1;
+let panning = false;
+let pointX = 0;
+let pointY = 0;
+let start = { x: 0, y: 0 };
+let zoom = document.querySelector("#svg-map");
+
+function setTransform() {
+    zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
+    zoom.style.transform = "0px 0px";
+}
+
+zoom.addEventListener('mousedown', function (e) {
+    e.preventDefault();
+    start = { x: e.clientX - pointX, y: e.clientY - pointY };
+    panning = true;
+    zoom.style.transition = "0s";
+})
+
+zoom.addEventListener('mouseup', function (e) {
+    panning = false;
+    zoom.style.transition = "0s";
+})
+
+zoom.addEventListener('mousemove', function (e) {
+    e.preventDefault();
+    if (!panning) {
+    return;
+    }
+    pointX = (e.clientX - start.x);
+    pointY = (e.clientY - start.y);
+    zoom.style.transition = "0s";
+    setTransform();
+})
+
+zoom.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    let xs = (e.clientX - pointX) / scale;
+    let ys = (e.clientY - pointY) / scale;
+    let delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
+    (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
+    pointX = e.clientX - xs * scale;
+    pointY = e.clientY - ys * scale;
+    zoom.style.transition = "0s";
+
+    setTransform();
+})
+
+
+//btn map
+//variables
+let btnReposition = document.querySelector('#btn-center');
+let btnPlus = document.querySelector('#btn-plus');
+let btnMoins = document.querySelector('#btn-minus');
+let zoomPos = 1;
+let i = 0.2;
+
+//btn reset position
+btnReposition.addEventListener('click', reposition);
+
+function reposition() {
+    scale = 1
+    zoomPos = 1
+
+    zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
+    zoom.style.transition = "0.5s";
+}
+
+//btn plus
+btnPlus.addEventListener('click', zoomIn);
+
+function zoomIn(){
+    let scale = zoomPos + i
+
+    zoom.style.transform = "scale(" + scale + ")";
+    zoom.style.transition = "0.5s";
+
+    zoomPos = zoomPos + i;
+}
+
+//btn moins
+btnMoins.addEventListener('click', zoomOut);
+
+function zoomOut(){
+    let scale = zoomPos - i;
+
+    zoom.style.transform = "scale(" + scale + ")";
+    zoom.style.transition = "0.5s";
+
+    zoomPos = zoomPos - i;
+}

@@ -175,6 +175,15 @@ html, body{
         box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
         padding: 20px;
         position: relative;
+
+        overflow: hidden;
+
+        svg {
+            transform-origin: center;
+            transform: scale(1) translate(0px, 0px);
+            transition: 0s;
+            cursor: grab;
+        }
     }
 
     &__zoom{
