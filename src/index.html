@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>DataPlay</title>
+    <title>P.D.N.I. • Un projet DATAPLAY</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,7 +11,7 @@
     <meta property ="og:description" content=""> <!-- TODO -->
     <meta property ="og:type" content="website">
     <meta property ="og:url" content="https://dylan-vercalsteren.be/projets/dataplay/">
-    <meta property ="og:image" content="https://dylan-vercalsteren.be/projets/dataplay/assets/images/alien.png"> <!-- Temporaire -->
+    <meta property ="og:image" content="https://dylan-vercalsteren.be/projets/dataplay/assets/images/shapes/disk.svg"> <!-- Temporaire -->
     <meta property ="og:image:width" content="386">
     <meta property ="og:image:height" content="386">
 
@@ -116,20 +116,47 @@
                                   <button class="zoom__el"><img src="assets/images/pictograms/minus.svg" alt="Pictogramme représentant un moins de zoom" class="data__picto"></button>
                                   <button class="zoom__el"><img src="assets/images/pictograms/center.svg" alt="Pictogramme représentant un centrage de zoom" class="data__picto"></button>
                               </div>
-                              <div>
+                              <!-- <div>
                                   <button class="zoom__el zoom__el--random text">Aléatoire</button>
-                              </div>
+                              </div> -->
                           </div>
                     </div>
                 
                     <div class="data__allcontent">
                         <div class="data__content"></div>
-                        <hr>
+                        <ul class="shapes__list">
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/chevron.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/cigar.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/circle.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/cone.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/cross.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/cylinder.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/diamond.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/disk.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/fireball.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/flash.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/formation.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/light.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/other.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/oval.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/rectangle.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/teardrop.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/en/triangle.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/cube.svg" alt=""></button></li>
+                            <li class="shapes__el"><button class="shapes__btn"><img src="assets/images/shapes/étoile.svg" alt=""></button></li>
+                        </ul>
 
                         <ul class="data__list"></ul>
-                        <!-- <div class="data__buttons">
-                            <button class="data__btn">Fun Fact</button>
-                        </div> -->
+
+                        <div class="funfact">
+                            <button class="funfact__btn">Fun Fact</button>
+                            <div class="funfact__content">
+                                <h3 class="funfact__title">Le saviez-vous ?</h3>
+                                <p class="funfact__text">Les statistiques avec les OVNI sont incroyables</p>
+                            </div>
+                        </div>
+                        
+
                     </div>
                 </div>
 
@@ -142,7 +169,7 @@
                     </div>
           
                     <div class="data__slider">
-                        <input type="range" min="1906" max="2021" value="1906" class="data__input" id="range">
+                        <input type="range" min="1906" max="2021" value="1906" class="data__input" id="range" disabled>
                         <small id="date" class="data__date"></small>
                     </div>
                 </div>
