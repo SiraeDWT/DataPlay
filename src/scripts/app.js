@@ -1,7 +1,5 @@
 "use strict";
 
-const { dumpWebpackConfig } = require("laravel-mix");
-
 String.prototype.firstLetterCapitalize = function() {
     return this.replace(/^./, this[0].toUpperCase());
 };
@@ -62,20 +60,20 @@ window.onload = function() {
     eventChangeOnload();
 };
 
-// let beginBtn = document.getElementById('begin-btn');
-// let backBtn = document.getElementById('back-btn');
-// let presentationSection = document.querySelector('.presentation');
-// let appSection = document.querySelector('.data');
+let beginBtn = document.getElementById('begin-btn');
+let backBtn = document.getElementById('back-btn');
+let presentationSection = document.querySelector('.presentation');
+let appSection = document.querySelector('.data');
 
-// beginBtn.addEventListener('click', () => {
-//     presentationSection.classList.add('presentation--hide');
-//     appSection.classList.add('data--show');
-// });
+beginBtn.addEventListener('click', () => {
+    presentationSection.classList.add('presentation--hide');
+    appSection.classList.add('data--show');
+});
 
-// backBtn.addEventListener('click', () => {
-//     presentationSection.classList.remove('presentation--hide');
-//     appSection.classList.remove('data--show');
-// });
+backBtn.addEventListener('click', () => {
+    presentationSection.classList.remove('presentation--hide');
+    appSection.classList.remove('data--show');
+});
 
 
 const ufoUrl = 'assets/data/ufo_data_final.json';
