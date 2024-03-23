@@ -1,5 +1,7 @@
 "use strict";
 
+const { dumpWebpackConfig } = require("laravel-mix");
+
 String.prototype.firstLetterCapitalize = function() {
     return this.replace(/^./, this[0].toUpperCase());
 };
@@ -60,6 +62,22 @@ window.onload = function() {
     eventChangeOnload();
 };
 
+// let beginBtn = document.getElementById('begin-btn');
+// let backBtn = document.getElementById('back-btn');
+// let presentationSection = document.querySelector('.presentation');
+// let appSection = document.querySelector('.data');
+
+// beginBtn.addEventListener('click', () => {
+//     presentationSection.classList.add('presentation--hide');
+//     appSection.classList.add('data--show');
+// });
+
+// backBtn.addEventListener('click', () => {
+//     presentationSection.classList.remove('presentation--hide');
+//     appSection.classList.remove('data--show');
+// });
+
+
 const ufoUrl = 'assets/data/ufo_data_final.json';
 
 fetch(ufoUrl)
@@ -112,8 +130,10 @@ fetch(ufoUrl)
                 let slider = document.querySelector('.data__slider');
                 let sliderInput = document.querySelector('.data__input');
 
+
                 let contentText = document.querySelector('.data__content');
                 let probaArea = document.querySelector('.data__list');
+
                 let currentCountry = null;
                 
 
@@ -194,12 +214,6 @@ fetch(ufoUrl)
                             probaArea.classList.add('data__list--show');
         
                             if (dataByDate.length > 0) {
-                                // contentText.innerHTML = `
-                                //     <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (${slider.value})</h2>
-                                //     <p class="data__text text">${dataByDate.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${dateFilter.length} cas recensés en Europe en ${slider.value}.</p>
-                                //     <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${dataByDate.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCity} % des cas du pays en ${slider.value}.</p>
-                                //     <p class="data__text text">${percentageCountry} % des cas en Europe ont eu lieu en ${country.translate().firstLetterCapitalize()} en ${slider.value}.</p>
-                                // `;
 
                                 contentText.innerHTML = `
                                     <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (${slider.value})</h2>
@@ -282,13 +296,6 @@ fetch(ufoUrl)
                         } else {
                             contentText.classList.add('data__content--show');
                             probaArea.classList.add('data__list--show');
-                            // contentText.innerHTML = `
-                            //     <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
-                            //     <p class="data__text text">${countryFilter.length} cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} sur ${data.ufo.length} cas recensés en Europe.</p>
-                            //     <p class="data__text text">${maxCountCity} cas à ${mostFrequentCity} sur ${countryFilter.length} en ${country.translate().firstLetterCapitalize()}, cela représente ${percentageCityGlobal} % des cas du pays.</p>
-                            //     <p class="data__text text">${percentageCountryGlobal} % des cas en Europe ont lieu en ${country.translate().firstLetterCapitalize()}.</p>
-                            //     <p class="data__text text">Les habitants de ${country.translate().firstLetterCapitalize()} ont ${percentageResidentsByCountry} % de chance de voir un OVNI.</p>
-                            // `;
 
                             contentText.innerHTML = `
                                 <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (1906 à 2021)</h2>
@@ -407,7 +414,6 @@ let funfacts = [
     "Vous avez plus de probabilité de voir un OVNI que de vous faire attaquer par un requin.",
     "Il est plus probable de découvrir une nouvelle espèce animale ou végétale que de rencontrer un OVNI.",
     "Vous avez plus de probabilité de voir un OVNI que de vous faire percuter par un astéroïde.",
-    "La chance d'être touché par la foudre, être frappé par un astéroïde et de gagner à la loterie dans la même journée est extrêmement improbable par rapport à une rencontre avec un OVNI.",
     "Il est plus probable de rencontrer un OVNI que de trouver une météorite."
 ];
 
@@ -429,6 +435,3 @@ btnFunfact.addEventListener('click', () => {
     `;
     previousFunfact = randomFunfact;
 });
-
-// Titre: Le saviez-vous ?
-// Funfact random
