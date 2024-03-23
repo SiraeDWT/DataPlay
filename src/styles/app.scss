@@ -53,9 +53,9 @@ html, body{
     }
 
     &__title{
-        font-family: $title-font;
-        font-weight: 500;
-        font-size: $h1-size;
+        font-family: $text-font;
+        font-weight: 100;
+        font-size: $h1-ultrasize;
         color: $color-yellow;
         margin: $space-p 0 $space-h3;
     }
