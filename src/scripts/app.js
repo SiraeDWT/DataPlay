@@ -66,7 +66,8 @@ const traductions = {
 };
 
 //! Changing, unknown, <empty string>, undefined, other: with other.svg
-//! Il manque egg, sphere
+//! Cercle, orb, sphere: with circle.svg
+//! Il manque egg
 //! C'est quoi cube et etoile ?
 
 function eventChangeOnload() {
@@ -254,7 +255,7 @@ fetch(ufoUrl)
                                 `;
 
                                 probaArea.innerHTML = `
-                                    <p class="data__text text">Il n'y a eu aucun cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} en ${slider.value}.</p>
+                                    <p class="data__text text">Il n'y a eu aucun cas d'OVNI recensés en ${country.translate().firstLetterCapitalize()} en ${slider.value} sur ${dateFilter.length} cas en Europe.</p>
                                 `;
 
                                 currentCountry = country;
@@ -525,11 +526,12 @@ zoom.addEventListener('mouseup', function (e) {
 zoom.addEventListener('mousemove', function (e) {
     e.preventDefault();
     if (!panning) {
-    return;
+        return;
     }
     pointX = (e.clientX - start.x);
     pointY = (e.clientY - start.y);
     zoom.style.transition = "0s";
+    
     setTransform();
 })
 
@@ -558,8 +560,8 @@ let i = 0.2;
 btnReposition.addEventListener('click', reposition);
 
 function reposition() {
-    scale = 1
-    zoomPos = 1
+    scale = 1;
+    zoomPos = 1;
 
     zoom.style.transform = "translate(" + pointX + "px, " + pointY + "px) scale(" + scale + ")";
     zoom.style.transition = "0.5s";
@@ -569,7 +571,7 @@ function reposition() {
 btnPlus.addEventListener('click', zoomIn);
 
 function zoomIn(){
-    let scale = zoomPos + i
+    let scale = zoomPos + i;
 
     zoom.style.transform = "scale(" + scale + ")";
     zoom.style.transition = "0.5s";
