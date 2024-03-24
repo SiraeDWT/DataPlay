@@ -64,8 +64,6 @@ const traductions = {
     'egg': 'oeuf',
 };
 
-//! Changing, unknown, <empty string>, undefined, other: with other.svg
-//! Cercle, orb, sphere: with circle.svg
 
 function eventChangeOnload() {
     // Simuler le premier check pour ne pas devoir attendre le change event
@@ -79,6 +77,7 @@ function eventChangeOnload() {
 window.onload = function() {
     eventChangeOnload();
 };
+
 
 let beginBtn = document.getElementById('begin-btn');
 let backBtn = document.getElementById('back-btn');
@@ -361,39 +360,38 @@ fetch(ufoUrl)
                                         console.log(`${countByShape} ${shapeFilter[0].shape.translate().firstLetterCapitalize()}`);
 
 
+                                        let percentageShapeByCountry = ((countByShape / countryFilter.length) * 100).toFixed(2);
 
                                         contentText.classList.add('data__content--show');
                                         probaArea.classList.add('data__list--show');
 
                                         contentText.innerHTML = `
-                                            <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (1906 à 2021)</h2>
+                                            <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (${shapeFilter[0].shape.translate().firstLetterCapitalize()})</h2>
                                         `;
 
                                         probaArea.innerHTML = `
                                             <li class="data__el"><span class="data__important">${countByShape}</span><span>${shapeFilter[0].shape.translate().firstLetterCapitalize()}</span></li>
+                                            <li class="data__el"><span class="data__important">${percentageShapeByCountry} %</span><span>${shapeFilter[0].shape.translate().firstLetterCapitalize()}/${country.translate().firstLetterCapitalize()}</span></li>
                                             <li class="data__el"><span class="data__important">${countryFilter.length}</span><span>${country.translate().firstLetterCapitalize()}</span></li>
-                                            <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
                                             <li class="data__el"><span class="data__important">${percentageCountryGlobal} %</span><span>% Europe</span></li>
                                         `;
                                     } else{
                                         console.log('ferme le tri par shape');
 
 
-                                        // contentText.classList.add('data__content--show');
-                                        // probaArea.classList.add('data__list--show');
+                                        contentText.classList.add('data__content--show');
+                                        probaArea.classList.add('data__list--show');
 
-                                        // contentText.innerHTML = `
-                                        //     <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (1906 à 2021)</h2>
-                                        // `;
+                                        contentText.innerHTML = `
+                                            <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
+                                        `;
 
-                                        // probaArea.innerHTML = `
-                                        //     <li class="data__el"><span class="data__important">${countryFilter.length}</span><span>OVNI</span></li>
-                                        //     <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
-                                        //     <li class="data__el"><span class="data__important">${percentageCountryGlobal} %</span><span>% Europe</span></li>
-                                        //     <li class="data__el"><span class="data__important">${percentageResidentsByCountry} ‰</span><span>‰ chance</span></li>
-                                        // `;
-                                        // currentCountry = country;
-                                        // btnCountry.classList.add('data__country--active');
+                                        probaArea.innerHTML = `
+                                            <li class="data__el"><span class="data__important">${countryFilter.length}</span><span>OVNI</span></li>
+                                            <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
+                                            <li class="data__el"><span class="data__important">${percentageCountryGlobal} %</span><span>% Europe</span></li>
+                                            <li class="data__el"><span class="data__important">${percentageResidentsByCountry} ‰</span><span>‰ chance</span></li>
+                                        `;
                                     }
                                 });
                             });
@@ -411,7 +409,7 @@ fetch(ufoUrl)
                             probaArea.classList.add('data__list--show');
 
                             contentText.innerHTML = `
-                                <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (1906 à 2021)</h2>
+                                <h2 class="data__title text">${country.translate().firstLetterCapitalize()}</h2>
                             `;
 
                             probaArea.innerHTML = `
