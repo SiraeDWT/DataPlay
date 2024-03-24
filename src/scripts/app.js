@@ -42,7 +42,27 @@ const traductions = {
     'slovakia': 'slovaquie',
     'slovenia': 'slovenie',
     'spain': 'espagne',
-    'sweden': 'suède'
+    'sweden': 'suède',
+
+    'chevron': 'chevron',
+    'cigar': 'cigare',
+    'circle': 'cercle',
+    'cone': 'cone',
+    'cross': 'croix',
+    'cylinder': 'cylindre',
+    'diamond': 'diamant',
+    'disk': 'disque',
+    'fireball': 'boule de feu',
+    'flash': 'flash lumineux',
+    'formation': 'formation',
+    'light': 'lumière',
+    'other': 'autre',
+    'oval': 'ovale',
+    'rectangle': 'rectangle',
+    'teardrop': 'goutte',
+    'triangle': 'triangle',
+    'cube': 'cube',
+    'etoile': 'étoile',
 };
 
 //! Changing, unknown, <empty string>, undefined, other: with other.svg
@@ -400,12 +420,47 @@ for (let i = 0; i < countries.length; i++) {
     });
 }
 
+
+function getShapeId(event) {
+    let shapeId = event.target.id;
+
+    if (!shapeId) {
+        let parent = event.target.parentElement;
+        if (parent && parent.id) {
+            return parent.id;
+        } else {
+            return null;
+        }
+    } else {
+        return shapeId;
+    }
+}
+
+let shapes = document.querySelectorAll('.shapes__btn');
+
+for (let i = 0; i < shapes.length; i++) {
+    shapes[i].addEventListener('mouseover', function(event) {
+        tooltip.style.display = 'block';
+        tooltip.innerHTML = `${getShapeId(event).translate().firstLetterCapitalize()}`;  
+    });
+
+    shapes[i].addEventListener('mousemove', function(event) {
+        updateTooltipPosition(event);
+    });
+
+    shapes[i].addEventListener('mouseout', function(event) {
+        tooltip.style.display = 'none';
+    });
+}
+
+
 function updateTooltipPosition(event) {
     let mouseX = event.clientX;
     let mouseY = event.clientY;
     tooltip.style.left = (mouseX + 15) + 'px';
     tooltip.style.top = (mouseY - 25) + 'px';
 }
+
 
 
 let funfacts = [
