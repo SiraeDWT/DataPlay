@@ -66,8 +66,6 @@ const traductions = {
 
 //! Changing, unknown, <empty string>, undefined, other: with other.svg
 //! Cercle, orb, sphere: with circle.svg
-//! Il manque egg
-//! C'est quoi cube et etoile ?
 
 function eventChangeOnload() {
     // Simuler le premier check pour ne pas devoir attendre le change event
@@ -151,6 +149,23 @@ fetch(ufoUrl)
                 }
             });
         });
+
+
+
+        // shapes.forEach(shape => {
+        //     // TRI PAR FORME - Au click, renvoie tous les cas sur base du shape sélectionné
+        //     let btnShape = document.getElementById(shape);
+
+        //     btnShape.addEventListener('click', () => {
+        //         const shapeFilter = data.ufo.filter(entry => entry.shape && entry.shape.toLowerCase().includes(shape));
+
+        //         if (btnShape.classList.contains('shapes__btn--active')){
+        //             console.log(shapeFilter);
+        //         } else{
+        //             console.log('ferme');
+        //         }
+        //     });
+        // });
 
        
         countries.forEach(country => {
@@ -339,11 +354,46 @@ fetch(ufoUrl)
 
                                 btnShape.addEventListener('click', () => {
                                     const shapeFilter = data.ufo.filter(entry => entry.shape && entry.shape.toLowerCase().includes(shape));
+                                    const shapeFilterByCountry = data.ufo.filter(entry => entry.shape && entry.shape.toLowerCase().includes(shape) && entry.location.country && entry.location.country.toLowerCase().includes(country));
 
                                     if (btnShape.classList.contains('shapes__btn--active')){
-                                        console.log(shapeFilter);
+                                        let countByShape = shapeFilterByCountry.length;
+                                        console.log(`${countByShape} ${shapeFilter[0].shape.translate().firstLetterCapitalize()}`);
+
+
+
+                                        contentText.classList.add('data__content--show');
+                                        probaArea.classList.add('data__list--show');
+
+                                        contentText.innerHTML = `
+                                            <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (1906 à 2021)</h2>
+                                        `;
+
+                                        probaArea.innerHTML = `
+                                            <li class="data__el"><span class="data__important">${countByShape}</span><span>${shapeFilter[0].shape.translate().firstLetterCapitalize()}</span></li>
+                                            <li class="data__el"><span class="data__important">${countryFilter.length}</span><span>${country.translate().firstLetterCapitalize()}</span></li>
+                                            <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
+                                            <li class="data__el"><span class="data__important">${percentageCountryGlobal} %</span><span>% Europe</span></li>
+                                        `;
                                     } else{
-                                        console.log('ferme');
+                                        console.log('ferme le tri par shape');
+
+
+                                        // contentText.classList.add('data__content--show');
+                                        // probaArea.classList.add('data__list--show');
+
+                                        // contentText.innerHTML = `
+                                        //     <h2 class="data__title text">${country.translate().firstLetterCapitalize()} (1906 à 2021)</h2>
+                                        // `;
+
+                                        // probaArea.innerHTML = `
+                                        //     <li class="data__el"><span class="data__important">${countryFilter.length}</span><span>OVNI</span></li>
+                                        //     <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
+                                        //     <li class="data__el"><span class="data__important">${percentageCountryGlobal} %</span><span>% Europe</span></li>
+                                        //     <li class="data__el"><span class="data__important">${percentageResidentsByCountry} ‰</span><span>‰ chance</span></li>
+                                        // `;
+                                        // currentCountry = country;
+                                        // btnCountry.classList.add('data__country--active');
                                     }
                                 });
                             });
