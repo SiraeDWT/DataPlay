@@ -61,8 +61,7 @@ const traductions = {
     'rectangle': 'rectangle',
     'teardrop': 'goutte',
     'triangle': 'triangle',
-    'cube': 'cube',
-    'etoile': 'étoile',
+    'egg': 'oeuf',
 };
 
 //! Changing, unknown, <empty string>, undefined, other: with other.svg
