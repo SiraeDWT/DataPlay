@@ -125,6 +125,19 @@ fetch(ufoUrl)
 
 
 
+
+        let shapesSet = new Set();
+        for (let i = 0; i < data.ufo.length; i++) {
+            let shape = data.ufo[i].shape;
+            if (shape && !["changing", "unknown", "", "orb", "sphere"].includes(shape.toLowerCase())) { // Exclure changing, unknown, empty, orb and sphere
+                shapesSet.add(shape.toLowerCase());
+            }
+        }
+        let shapes = Array.from(shapesSet); // shapes contient toutes les formes: (18) ['circle', 'light', 'formation', 'oval', 'disk', 'other', 'triangle', 'diamond', 'cigar', 'fireball', 'cylinder', 'rectangle', 'cone', 'flash', 'teardrop', 'egg', 'chevron', 'cross']
+
+
+
+
         const shapesBtn = document.querySelectorAll('.shapes__btn');
 
         shapesBtn.forEach(button => {
@@ -315,6 +328,36 @@ fetch(ufoUrl)
                             btnCountry.classList.remove('data__country--active');
                             currentCountry = null;
                         } else {
+
+
+
+
+                            
+
+                            shapes.forEach(shape => {
+                                // TRI PAR FORME - Au click, renvoie tous les cas sur base du shape sélectionné
+                                let btnShape = document.getElementById(shape);
+
+                                btnShape.addEventListener('click', () => {
+                                    const shapeFilter = data.ufo.filter(entry => entry.shape && entry.shape.toLowerCase().includes(shape));
+
+                                    if (btnShape.classList.contains('shapes__btn--active')){
+                                        console.log(shapeFilter);
+                                    } else{
+                                        console.log('ferme');
+                                    }
+                                });
+                            });
+                            
+
+
+
+
+
+
+
+
+
                             contentText.classList.add('data__content--show');
                             probaArea.classList.add('data__list--show');
 
