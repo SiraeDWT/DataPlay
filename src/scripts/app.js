@@ -299,6 +299,17 @@ function displayData(){
 
     if(database.length == 0) return;
 
+    contentText.innerHTML = `
+    <h2 class="data__title text">Union européenne</h2>
+    `;
+
+    probaArea.innerHTML = `
+        <li class="data__el"><span class="data__important">1539</span><span>OVNI</span></li>
+        <li class="data__el"><span class="data__important">27</span><span>Pays</span></li>
+        <li class="data__el"><span class="data__important">18</span><span>Formes</span></li>
+        <li class="data__el"><span class="data__important">115</span><span>Années</span></li> 
+    `;
+
     // current year
     let currentYear;
     if(document.getElementById("date-checkbox").checked){
@@ -319,27 +330,15 @@ function displayData(){
         activeShape = activeShapeElement.id;
     }
 
-    console.log(currentYear, activeCountry, activeShape);
+    // console.log(currentYear, activeCountry, activeShape);
 
     let filteredUfoData = [...database.ufo];
-    if(activeCountry){
+    if(activeCountry){ // Quand on clique sur un pays
         filteredUfoData = filteredUfoData.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(activeCountry));
-    }
-
-
-    if(activeShape){
-        filteredUfoData = filteredUfoData.filter(entry => entry.shape && entry.shape.toLowerCase().includes(activeShape));
-    }
-
-
-    if(currentYear){
-        filteredUfoData = filteredUfoData.filter(entry => {
-            return entry.momentEvent.dateTimeEvent.split('/')[2] == currentYear;
-        });
 
 
         contentText.innerHTML = `
-            <h2 class="data__title text">${activeCountry.translate().firstLetterCapitalize()} (${currentYear})</h2>
+            <h2 class="data__title text">${activeCountry.translate().firstLetterCapitalize()}</h2>
         `;
 
         probaArea.innerHTML = `
@@ -347,9 +346,59 @@ function displayData(){
         `;
     }
 
-    console.log(filteredUfoData);
 
-    // TODO: display all the data here :D 
+    if(activeShape){ // Quand on clique sur une forme
+        filteredUfoData = filteredUfoData.filter(entry => entry.shape && entry.shape.toLowerCase().includes(activeShape));
+
+
+        if(activeCountry) {
+            contentText.innerHTML = `
+                <h2 class="data__title text">${activeCountry.translate().firstLetterCapitalize()} (${activeShape.translate()})</h2>
+            `;
+
+            probaArea.innerHTML = `
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            `;
+        } else {
+            contentText.innerHTML = `
+                <h2 class="data__title text">${activeShape.translate().firstLetterCapitalize()}</h2>
+            `;
+
+            probaArea.innerHTML = `
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            `;
+        }
+        
+    }
+
+
+    if(currentYear){ // Quand on clique sur une année
+        filteredUfoData = filteredUfoData.filter(entry => {
+            return entry.momentEvent.dateTimeEvent.split('/')[2] == currentYear;
+        });
+
+
+        if(activeCountry) {
+            contentText.innerHTML = `
+                <h2 class="data__title text">${activeCountry.translate().firstLetterCapitalize()} (${currentYear})</h2>
+            `;
+
+            probaArea.innerHTML = `
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            `;
+        } else {
+            contentText.innerHTML = `
+                <h2 class="data__title text">${currentYear}</h2>
+            `;
+
+            probaArea.innerHTML = `
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            `;
+        }
+        
+    }
+
+    // console.log(filteredUfoData);  
 }
 
 
