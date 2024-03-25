@@ -40,7 +40,7 @@
             <button class="data__butn data__back" id="back-btn"><img src="assets/images/pictograms/back.svg" alt="Flèche de retour en arrière" class="data__picto data__picto--back"></button>
             
             <div class="data__app">
-                <div class="test">
+                <div class="data__container">
                     <div class="data__map">
                         <svg id="svg-map" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272.54 353.18">
                             <polygon id="austria" class="data__country data__tooltip" points="165.9 246.5 165.9 251.28 161.2 251.28 161.2 256.03 158.74 256.03 158.74 258.38 151.7 258.38 151.7 260.76 142.15 260.76 142.15 258.4 137.4 258.4 137.4 256.03 135.01 256.03 135.01 258.4 127.94 258.4 127.94 256.03 132.65 256.03 132.65 253.63 142.15 253.63 142.15 248.85 144.42 248.85 144.42 246.5 153.99 246.5 153.99 244.14 163.55 244.14 163.55 246.5 165.9 246.5"/>
@@ -146,32 +146,27 @@
                             <li class="shapes__el"><button class="shapes__btn" id="egg"><img src="assets/images/shapes/egg.svg" alt=""></button></li>
                         </ul>
 
-                        <div class="data__content"></div>
-                        <ul class="data__list"></ul>
 
-                        <div class="funfact">
-                            <div class="funfact__content">
-                                <h3 class="funfact__title">Le saviez-vous ?</h3>
-                                <p class="funfact__text">Si vous appuyez sur le bouton Fun Fact, vous allez découvrir des statistiques avec les OVNI incroyables.</p>
-                            </div>
-                            <button class="funfact__btn">Fun Fact</button>
+
+                        <div>
+                            <div class="data__content"></div>
+                            <ul class="data__list"></ul>
                         </div>
                         
 
-                    </div>
-                </div>
 
 
-
-                <div class="data__inputs">
-                    <div class="data__selector">
-                      <label for="date-checkbox">Date</label>
-                      <input type="checkbox" name="date-checkbox" id="date-checkbox" class="data__checkbox">
-                    </div>
-          
-                    <div class="data__slider">
-                        <input type="range" min="1906" max="2021" value="1906" class="data__input" id="range" disabled>
-                        <small id="date" class="data__date"></small>
+                        <div class="data__inputs">
+                            <div class="data__selector">
+                                <label for="date-checkbox">Date</label>
+                                <input type="checkbox" name="date-checkbox" id="date-checkbox" class="data__checkbox">
+                            </div>
+                  
+                            <div class="data__slider">
+                                <input type="range" min="1906" max="2021" value="1906" class="data__input" id="range" disabled>
+                                <small id="date" class="data__date"></small>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
