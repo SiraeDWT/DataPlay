@@ -208,7 +208,7 @@ html, body{
             transform-origin: center;
             transform: scale(1) translate(0px, 0px);
             transition: 0s;
-            cursor: grab;
+            cursor: url(../assets/images/cursor-yellow-grab.cur), grab;
         }
     }
 
@@ -348,6 +348,10 @@ html, body{
         margin: $space-p 0;
         padding: 0;
         list-style: none;
+
+        display: flex;
+        justify-content: space-between;
+        
         // display: none;
 
         &--show{
