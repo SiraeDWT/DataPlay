@@ -18,6 +18,8 @@ html, body{
 .body{
     background-color: $color-dark-blue;
     overflow: hidden;
+
+    cursor: url(../assets/images/cursor-yellow.cur), auto;
 }
 
 .text{
@@ -67,7 +69,7 @@ html, body{
     }
 
     &__btn{
-        cursor: pointer;
+        cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
         border: none;
         box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
         padding: $p-mini-size $p-size;
@@ -125,9 +127,9 @@ html, body{
         height: 5px;
         background: $color-yellow;
         border-radius: 0px;
-        cursor: pointer;
+        cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
 
-        &::-webkit-slider-thumb {
+        &::-webkit-slider-thumb{
             -webkit-appearance: none;
             appearance: none;
 
@@ -141,7 +143,31 @@ html, body{
             background-size: cover;
 
             border-radius: 0px;
-            cursor: pointer;
+            cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
+
+            &:hover{
+                // background: $color-red-darky;
+                transform: scale(1.2);
+            }
+        }
+
+        &::-moz-range-thumb{
+            -moz-appearance: none;
+            appearance: none;
+
+            // width: 5px;
+            // height: 20px;
+            // background: $color-red;
+
+            width: 25px;
+            height: 25px;
+            background-image: url('../assets/images/shapes/diamond.svg');
+            background-size: cover;
+
+            border-radius: 0px;
+            border: 0;
+            background-color: rgba(0,0,0,0);
+            cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
 
             &:hover{
                 // background: $color-red-darky;
@@ -158,10 +184,10 @@ html, body{
     }
 
     &__app{
-        padding: calc($space-p/1.5) 0;
+        padding: $space-h3 0;
     }
 
-    .test{
+    &__container{
         display: flex;
         justify-content: space-around;
     }
@@ -197,7 +223,7 @@ html, body{
             box-shadow: -3px 0 0 0 $color-yellow, 3px 0 0 0 $color-yellow, 0 -3px 0 0 $color-yellow, 0 3px 0 0 $color-yellow;
             border: none;
             margin: 0 20px 0 0;
-            cursor: pointer;
+            cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
 
             transition: .1s ease-in-out;
 
@@ -227,7 +253,7 @@ html, body{
     }
 
     &__country{
-        cursor: pointer;
+        cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
         fill: $color-yellow;
 
         &:hover{
@@ -247,7 +273,10 @@ html, body{
     &__allcontent{
         width: 45%;
         // height: 50%;
-        position: relative;
+        // position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     &__inputs{
@@ -296,7 +325,7 @@ html, body{
 
         &:hover{
             background-color: $color-yellow-lighty;
-            cursor: pointer;
+            cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
         }
 
         &:active{
@@ -308,7 +337,7 @@ html, body{
         font-size: $p-size;
         margin-top: $space-h1;
 
-        display: none;
+        // display: none;
 
         &--show{
             display: block;
@@ -319,7 +348,7 @@ html, body{
         margin: $space-p 0;
         padding: 0;
         list-style: none;
-        display: none;
+        // display: none;
 
         &--show{
             display: flex;
@@ -364,7 +393,7 @@ html, body{
     }
 
     &__butn{
-        cursor: pointer;
+        cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
         border: none;
         // box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
         // padding: $p-mini-size $p-size;
@@ -399,56 +428,6 @@ html, body{
     }
 }
 
-.funfact{
-    position: absolute;
-    bottom: 0; right: 25%; left: 0;
-
-
-    &__btn{
-        cursor: pointer;
-        border: none;
-        box-shadow: -5px 0 0 0 $color-yellow, 5px 0 0 0 $color-yellow, 0 -5px 0 0 $color-yellow, 0 5px 0 0 $color-yellow;
-        padding: $p-mini-size $p-size;
-        background-color: $color-dark-blue;
-        font-family: $main-font;
-        font-size: $p-size;
-        color: $color-yellow;
-        margin: $space-p 0 0 0;
-        transition: .1s ease-in-out;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:hover{
-            background-color: $color-yellow;
-            color: $color-dark-blue;
-        }
-
-        &:active{
-            transform: scale(1.1);
-        }
-    }
-
-    &__content{
-        box-shadow: -3px 0 0 0 $color-yellow, 3px 0 0 0 $color-yellow, 0 -3px 0 0 $color-yellow, 0 3px 0 0 $color-yellow;
-        margin-top: $space-p;
-        padding: 20px;
-        font-family: $text-font;
-    }
-
-    &__title{
-        font-size: $h2-size;
-        font-weight: 100;
-        margin-bottom: calc($space-p/2);
-    }
-
-    &__text{
-        font-size: $p-size;
-        line-height: $line-height;
-    }
-}
-
 .shapes{
 
     &__list{
@@ -468,7 +447,7 @@ html, body{
         height: 44px;
         box-shadow: -3px 0 0 0 $color-yellow, 3px 0 0 0 $color-yellow, 0 -3px 0 0 $color-yellow, 0 3px 0 0 $color-yellow;
         background-color: $color-dark-blue;
-        cursor: pointer;
+        cursor: url(../assets/images/cursor-yellow-pointer.cur), pointer;
         padding: calc($space-p/8);
 
         &:hover{
@@ -494,11 +473,4 @@ html, body{
     padding: 5px 7px;
     pointer-events: none;
     display: none;
-}
-
-.test1{
-    margin: $space-h3 0;
-    border: none;
-    background-color: $color-yellow;
-    height: 5px;
 }
