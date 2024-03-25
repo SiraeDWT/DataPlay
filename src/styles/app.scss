@@ -351,7 +351,7 @@ html, body{
 
         display: flex;
         justify-content: space-between;
-        
+
         // display: none;
 
         &--show{
@@ -371,7 +371,7 @@ html, body{
 
     &__important{
         color: $color-red-darky;
-        font-size: $h2-size;
+        font-size: $h1-size;
         font-family: $text-font;
     }
 
