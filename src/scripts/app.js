@@ -82,11 +82,14 @@ let contentText = document.querySelector('.data__content');
 let probaArea = document.querySelector('.data__list');
 
 contentText.innerHTML = `
-    <h2 class="data__title text">Europe (1906 à 2021)</h2>
+    <h2 class="data__title text">Union européenne</h2>
 `;
 
 probaArea.innerHTML = `
     <li class="data__el"><span class="data__important">1539</span><span>OVNI</span></li>
+    <li class="data__el"><span class="data__important">27</span><span>Pays</span></li>
+    <li class="data__el"><span class="data__important">18</span><span>Formes</span></li>
+    <li class="data__el"><span class="data__important">115</span><span>Années</span></li> 
 `;
 
 
