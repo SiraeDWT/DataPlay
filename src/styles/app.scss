@@ -7,6 +7,10 @@
     padding: 0;
 }
 
+html{
+    cursor: url(../assets/images/cursor-yellow.cur), auto;
+}
+
 .body{
     background-color: $color-dark-blue;
 
@@ -493,8 +497,37 @@
 
 
 @media only screen and (min-width: 640px){
+    .data{
+        flex-direction: column;
 
+        // &__map{
+        //     order: 1;
+        // }
 
+    }
+
+    // .shapes{
+
+    //     &__btn{
+    //         order: 2;
+    //     }
+    // }
+}
+
+@media only screen and (min-width: 840px){
+    .presentation{
+        &__text{
+            width: 75%;
+        }
+    }
+}
+
+@media only screen and (min-width: 1080px){
+    .presentation{
+        &__text{
+            width: 70%;
+        }
+    }
 }
 
 
@@ -511,7 +544,7 @@
     // }
     
     .presentation{
-        width: 58%;
+        width: 100%;
     
     
         &__content{
