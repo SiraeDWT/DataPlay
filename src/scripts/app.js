@@ -65,19 +65,6 @@ const traductions = {
 };
 
 
-// function eventChangeOnload() {
-//     // Simuler le premier check pour ne pas devoir attendre le change event
-//     let dateCheckbox = document.getElementById("date-checkbox");
-//     dateCheckbox.checked = false;
-
-//     let changeEvent = new Event('change');
-//     dateCheckbox.dispatchEvent(changeEvent);
-// }
-
-// window.addEventListener('load', function() {
-//     eventChangeOnload();
-// });
-
 let contentText = document.querySelector('.data__content');
 let probaArea = document.querySelector('.data__list');
 
@@ -295,6 +282,8 @@ function unselectCountry(){
 
 
 
+
+
 function displayData(){
 
     if(database.length == 0) return;
@@ -398,7 +387,24 @@ function displayData(){
         
     }
 
-    // console.log(filteredUfoData);  
+
+    //Griser les boutons de sélection des formes s'il n'y a pas de formes après le tri
+
+    // const shapesBtns = document.querySelectorAll('.shapes__btn');
+
+    // if (activeShape && filteredUfoData.length === 0) {
+    //     // console.log(filteredUfoData);
+    //     shapesBtns.forEach(button => {
+    //         button.setAttribute('disabled', 'disabled');
+    //         button.style.opacity = "0.2";
+    //     });
+
+    // } else {
+    //     shapesBtns.forEach(button => {
+    //         button.removeAttribute('disabled');
+    //     });
+
+    // }
 }
 
 
