@@ -33,3 +33,13 @@
 +++++
 
 - Faire des tests de tout type pour jouer avec les données;
+
+
+
++++++
+
+- Ajuster la version tablette;
+- Ajouter la fonctionnalité pour griser les boutons des formes;
+- Ajouter d'autres templates de données;
+- Changer la couleur des boutons de zoom au survol;
+- Ajuster le script de la map;
