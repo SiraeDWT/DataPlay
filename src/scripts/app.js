@@ -322,9 +322,39 @@ function displayData(){
     // console.log(currentYear, activeCountry, activeShape);
 
     let filteredUfoData = [...database.ufo];
+
+    let totalCountUfo = filteredUfoData.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(activeCountry));
+
+
     if(activeCountry){ // Quand on clique sur un pays
         filteredUfoData = filteredUfoData.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(activeCountry));
 
+        let counts = {};
+
+        for (let i = 0; i < filteredUfoData.length; i++) {
+            let city = filteredUfoData[i].location.city;
+            if (counts[city] === undefined) {
+                counts[city] = 1;
+            } else {
+                counts[city]++;
+            }
+        }
+    
+        let mostFrequentCity;
+        let maxCountCity = 0;
+    
+        for (let city in counts) {
+            if (counts[city] > maxCountCity) {
+                maxCountCity = counts[city];
+                mostFrequentCity = city;
+            }
+        }
+    
+        if (mostFrequentCity === "") {
+            mostFrequentCity = "Lieu inconnu";
+        }
+
+        let percentageEuropeByCountry = ((filteredUfoData.length / database.ufo.length) * 100).toFixed(2);
 
         contentText.innerHTML = `
             <h2 class="data__title text">${activeCountry.translate().firstLetterCapitalize()}</h2>
@@ -332,13 +362,17 @@ function displayData(){
 
         probaArea.innerHTML = `
             <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            <li class="data__el"><span class="data__important">${percentageEuropeByCountry} %</span><span>% Europe</span></li>
+            <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
         `;
     }
-
+    
 
     if(activeShape){ // Quand on clique sur une forme
         filteredUfoData = filteredUfoData.filter(entry => entry.shape && entry.shape.toLowerCase().includes(activeShape));
+        
 
+        let percentageShapeByCountry = ((filteredUfoData.length / totalCountUfo.length) * 100).toFixed(2);
 
         if(activeCountry) {
             contentText.innerHTML = `
@@ -346,7 +380,9 @@ function displayData(){
             `;
 
             probaArea.innerHTML = `
-                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI ${activeShape.translate()}</span></li>
+                <li class="data__el"><span class="data__important">${percentageShapeByCountry} %</span><span>${activeShape.translate().firstLetterCapitalize()}/${activeCountry.translate().firstLetterCapitalize()}</span></li>
+                <li class="data__el"><span class="data__important">${totalCountUfo.length}</span><span>OVNI ${activeCountry.translate().firstLetterCapitalize()}</span></li>
             `;
         } else {
             contentText.innerHTML = `
@@ -377,7 +413,7 @@ function displayData(){
             `;
         } else {
             contentText.innerHTML = `
-                <h2 class="data__title text">${currentYear}</h2>
+                <h2 class="data__title text">En ${currentYear}</h2>
             `;
 
             probaArea.innerHTML = `
@@ -501,3 +537,28 @@ function zoomOut(){
 
     zoomPos = zoomPos - i;
 }
+
+
+
+
+
+
+function spanFranz() {
+    const herrUption = document.querySelector('.herr-uption');
+
+    const numberOfSpans = 500;
+    
+    for (let i = 0; i < numberOfSpans; i++) {
+        const span = document.createElement('span');
+        herrUption.appendChild(span);
+    }
+}
+
+
+document.querySelector('.btn-franz').addEventListener('click', function() {
+    spanFranz();
+    let herrUptionSpans = document.querySelectorAll('.herr-uption > span');
+    herrUptionSpans.forEach(function(span) {
+        span.classList.toggle('animation');
+    });
+});
