@@ -122,6 +122,7 @@ countriesBtn.forEach(button => {
 
         if(activeButton){
             activeButton.classList.remove("data__country--active");
+            resetShapesButtons();
         }
 
         displayData();
@@ -356,7 +357,7 @@ function displayData(){
         }
     
         if (mostFrequentCity === "") {
-            mostFrequentCity = "Lieu inconnu";
+            mostFrequentCity = "lieu inconnu";
         }
 
         let percentageEuropeByCountry = ((filteredUfoData.length / database.ufo.length) * 100).toFixed(2);
@@ -367,8 +368,9 @@ function displayData(){
 
         probaArea.innerHTML = `
             <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            <li class="data__el"><span class="data__important">${database.ufo.length}</span><span>en Europe</span></li>
             <li class="data__el"><span class="data__important">${percentageEuropeByCountry} %</span><span>% Europe</span></li>
-            <li class="data__el"><span class="data__important">${maxCountCity}</span><span>${mostFrequentCity}</span></li>
+            <li class="data__el"><span class="data__important">${maxCountCity}</span><span>à ${mostFrequentCity}</span></li>
         `;
     }
     
@@ -385,9 +387,9 @@ function displayData(){
             `;
 
             probaArea.innerHTML = `
-                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI ${activeShape.translate()}</span></li>
-                <li class="data__el"><span class="data__important">${percentageShapeByCountry} %</span><span>${activeShape.translate().firstLetterCapitalize()}/${activeCountry.translate().firstLetterCapitalize()}</span></li>
                 <li class="data__el"><span class="data__important">${totalCountUfo.length}</span><span>OVNI ${activeCountry.translate().firstLetterCapitalize()}</span></li>
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI forme ${activeShape.translate()}</span></li>
+                <li class="data__el"><span class="data__important">${percentageShapeByCountry} %</span><span>${activeShape.translate().firstLetterCapitalize()}/${activeCountry.translate().firstLetterCapitalize()}</span></li>
             `;
         } else {
             contentText.innerHTML = `
@@ -413,6 +415,14 @@ function displayData(){
         if(activeCountry) {
             contentText.innerHTML = `
                 <h2 class="data__title text">${activeCountry.translate().firstLetterCapitalize()} (${currentYear})</h2>
+            `;
+
+            probaArea.innerHTML = `
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+            `;
+        } else if (activeShape) {
+            contentText.innerHTML = `
+                <h2 class="data__title text">En ${currentYear} (${activeShape.translate()})</h2>
             `;
 
             probaArea.innerHTML = `
