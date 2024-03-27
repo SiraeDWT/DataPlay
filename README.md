@@ -1,10 +1,10 @@
-# DataPlay 2024 - Project Data Non Identified
+# DataPlay 2024 • DWT 🏴‍☠️
 
-Projet DataPlay 2024
+## Project Data Non Identified
+
+Discover data related to UFOs in the European Union. Whether by country, shape, date or all at once, the data is dynamically updated.
 
 -----
-
-## Workflow with Laravel Mix.
 
 ### Install
 
@@ -26,11 +26,6 @@ Projet DataPlay 2024
 - Create sources maps.
 - Run a dev web server with browsersync.
 
-### Warning
-
-Not intended to be used in production since minification as been disabled.  
-For school project purpose only.
-
 -----
 
-From the **P.D.N.I.** project team - __[_Dylan Vercalsteren_](https://dylan-vercalsteren.be)__, __[_Noa Jacquemin_](http://noa-jacquemin.be/)__, __[_Romain Collin_](http://romaincollin.be/)__,  __[_Thibault Varga_](#)__.
+From the **P.D.N.I.** project team - __[_Dylan Vercalsteren_](https://dylan-vercalsteren.be)__, __[_Noa Jacquemin_](http://noa-jacquemin.be/)__, __[_Romain Collin_](http://romaincollin.be/)__,  __[_Thibault Varga_](https://thibault-varga.com/)__.
