@@ -399,6 +399,8 @@ function displayData(){
             return entry.momentEvent.dateTimeEvent.split('/')[2] == currentYear;
         });
 
+        dateOutput.innerHTML = `${currentYear}`;
+
 
         if(activeCountry) {
             contentText.innerHTML = `
@@ -424,9 +426,9 @@ function displayData(){
     //Griser les boutons de sélection des formes s'il n'y a pas de formes après le tri
     let availableShapes = getAvailableShapes(activeCountry, currentYear);
     const shapesBtns = document.querySelectorAll('.shapes__btn');
-    console.log(availableShapes)
+    // console.log(availableShapes);
     for(let shapesBtn of shapesBtns){
-        console.log(shapesBtn.id)
+        // console.log(shapesBtn.id);
         if(availableShapes.includes(shapesBtn.id)){
             shapesBtn.removeAttribute('disabled');
             shapesBtn.style.opacity = "1";
@@ -435,24 +437,6 @@ function displayData(){
             shapesBtn.style.opacity = "0.2";
         }
     }
-
-
-    /*
-    if (activeShape && filteredUfoData.length === 0) {
-        // console.log(filteredUfoData);
-        shapesBtns.forEach(button => {
-            button.setAttribute('disabled', 'disabled');
-            button.style.opacity = "0.2";
-        });
-
-    } else {
-        shapesBtns.forEach(button => {
-            button.removeAttribute('disabled');
-        });
-
-    }*/
-
-
 }
 
 function getAvailableShapes(activeCountry, currentYear){
