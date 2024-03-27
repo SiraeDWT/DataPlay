@@ -226,6 +226,11 @@ html{
 
             &:hover{
                 background-color: $color-yellow;
+
+                img{
+                    filter: invert(100%);
+                }
+                
             }
 
             &:active{
