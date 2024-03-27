@@ -326,8 +326,6 @@ function displayData(){
         activeShape = activeShapeElement.id;
     }
 
-    // console.log(currentYear, activeCountry, activeShape);
-
     let filteredUfoData = [...database.ufo];
 
     let totalCountUfo = filteredUfoData.filter(entry => entry.location.country && entry.location.country.toLowerCase().includes(activeCountry));
@@ -433,12 +431,10 @@ function displayData(){
     }
 
 
-    //Griser les boutons de sélection des formes s'il n'y a pas de formes après le tri
+    // Griser les boutons de sélection des formes s'il n'y a pas de formes après le tri
     let availableShapes = getAvailableShapes(activeCountry, currentYear);
     const shapesBtns = document.querySelectorAll('.shapes__btn');
-    // console.log(availableShapes);
     for(let shapesBtn of shapesBtns){
-        // console.log(shapesBtn.id);
         if(availableShapes.includes(shapesBtn.id)){
             shapesBtn.removeAttribute('disabled');
             shapesBtn.style.opacity = "1";
