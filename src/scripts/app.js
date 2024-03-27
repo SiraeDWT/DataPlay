@@ -140,9 +140,19 @@ dateCheckbox.addEventListener('change', function() {
     }else{
         dateSlider.classList.remove('data__slider--show');
         dateRange.disabled = true;
+        resetShapesButtons();
     }
     displayData();
 });
+
+
+function resetShapesButtons() {
+    const shapesBtns = document.querySelectorAll('.shapes__btn');
+    shapesBtns.forEach(btn => {
+        btn.removeAttribute('disabled');
+        btn.style.opacity = '1';
+    });
+}
 
 
 dateOutput.innerHTML = dateRange.value;
