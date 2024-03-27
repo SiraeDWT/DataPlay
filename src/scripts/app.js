@@ -162,7 +162,7 @@ const displaySlider = () => {
     dateOutput.style.left = newPosition + 'px';
 };
 
-dateRange.addEventListener('input', displaySlider);
+dateRange.addEventListener('input', updateSlider);
 dateRange.addEventListener('change', updateSlider);
 window.addEventListener('resize', displaySlider);
 
@@ -281,15 +281,12 @@ function unselectCountry(){
 }
 
 
-
-
-
 function displayData(){
 
     if(database.length == 0) return;
 
     contentText.innerHTML = `
-    <h2 class="data__title text">Union européenne</h2>
+        <h2 class="data__title text">Union européenne</h2>
     `;
 
     probaArea.innerHTML = `
@@ -425,24 +422,64 @@ function displayData(){
 
 
     //Griser les boutons de sélection des formes s'il n'y a pas de formes après le tri
+    let availableShapes = getAvailableShapes(activeCountry, currentYear);
+    const shapesBtns = document.querySelectorAll('.shapes__btn');
+    console.log(availableShapes)
+    for(let shapesBtn of shapesBtns){
+        console.log(shapesBtn.id)
+        if(availableShapes.includes(shapesBtn.id)){
+            shapesBtn.removeAttribute('disabled');
+            shapesBtn.style.opacity = "1";
+        }else{
+            shapesBtn.setAttribute('disabled', 'disabled');
+            shapesBtn.style.opacity = "0.2";
+        }
+    }
 
-    // const shapesBtns = document.querySelectorAll('.shapes__btn');
 
-    // if (activeShape && filteredUfoData.length === 0) {
-    //     // console.log(filteredUfoData);
-    //     shapesBtns.forEach(button => {
-    //         button.setAttribute('disabled', 'disabled');
-    //         button.style.opacity = "0.2";
-    //     });
+    /*
+    if (activeShape && filteredUfoData.length === 0) {
+        // console.log(filteredUfoData);
+        shapesBtns.forEach(button => {
+            button.setAttribute('disabled', 'disabled');
+            button.style.opacity = "0.2";
+        });
 
-    // } else {
-    //     shapesBtns.forEach(button => {
-    //         button.removeAttribute('disabled');
-    //     });
+    } else {
+        shapesBtns.forEach(button => {
+            button.removeAttribute('disabled');
+        });
 
-    // }
+    }*/
+
+
 }
 
+function getAvailableShapes(activeCountry, currentYear){
+    
+    let filteredUfoData = [...database.ufo];
+
+    if(activeCountry){
+        filteredUfoData = filteredUfoData.filter(entry => {
+            return entry.location.country && entry.location.country.toLowerCase().includes(activeCountry);
+        });
+    }
+    
+    if(currentYear){
+        filteredUfoData = filteredUfoData.filter(entry => {
+            return entry.momentEvent.dateTimeEvent.split('/')[2] == currentYear;
+        });
+    }
+    
+    let buffer = [];
+    for(let entry of filteredUfoData){
+        let shapeName = entry.shape.toLowerCase();
+        if(!buffer.includes(shapeName)){
+            buffer.push(shapeName);
+        }
+    }
+    return buffer;
+}
 
 
 // MAP
@@ -546,7 +583,7 @@ function zoomOut(){
 function spanFranz() {
     const herrUption = document.querySelector('.herr-uption');
 
-    const numberOfSpans = 500;
+    const numberOfSpans = 150;
     
     for (let i = 0; i < numberOfSpans; i++) {
         const span = document.createElement('span');
