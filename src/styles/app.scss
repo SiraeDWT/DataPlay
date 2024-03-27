@@ -680,7 +680,7 @@ html{
             @include sizer(78px);
         }
     
-        @for $i from 1 through 500 {
+        @for $i from 1 through 150 {
             &:nth-child(#{$i}) {
                 animation-delay: random() * -6s;
                 animation-duration: random() * 4s + 2s;
@@ -693,7 +693,6 @@ html{
 
                 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
                     background-image: url('../assets/images/herr-franz@2x.png');
-                    // Assurez-vous d'avoir herr-franz@2x.png dans votre répertoire d'images
                 }
         
                 @if (random() > 0.5) {
