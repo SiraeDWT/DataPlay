@@ -72,7 +72,7 @@ html{
         font-family: $main-font;
         font-size: $p-size;
         color: $color-yellow;
-        margin: $space-h3 0 0 0;
+        margin: $space-h3 0;
         transition: .1s ease-in-out;
 
         display: flex;
@@ -211,7 +211,7 @@ html{
 
     &__zoom{
         position: absolute;
-        top: 44px; left: 44px;
+        top: 22px; left: 22px;
 
         .zoom__el{
             width: 22px;
@@ -502,6 +502,11 @@ html{
 
 
 @media only screen and (min-width: 640px){
+    .presentation{
+        &__content{
+            // display: block;
+        }
+    }
     .data{
         flex-direction: column;
     }
@@ -542,6 +547,7 @@ html{
     
         &__content{
             margin-top: $space-h1;
+            // display: flex;
         }
     
         &__title{
