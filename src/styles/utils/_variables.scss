@@ -1,6 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
+// mobile size
+$p-size-mobile: 18px; /* Rapport 1.414 */
+$h5-size-mobile: 25px;
+$h4-size-mobile: 36px;
+$h3-size-mobile: 51px;
+$h2-size-mobile: 72px;
+$h1-size-mobile: 102px;
+
+$space-p-mobile: 18px;
+$space-h5-mobile: 25px;
+$space-h4-mobile: 36px;
+$space-h3-mobile: 51px;
+$space-h2-mobile: 72px;
+$space-h1-mobile: 102px;
+$space-section-mobile: 144px;
+
+// desktop font size & tab font size
+$p-size-landing: 22px; /* Rapport 1.414 */
+$h5-size-landing: 31px;
+$h4-size-landing: 44px;
+$h3-size-landing: 52px;
+$h2-size-landing: 88px;
+$h1-size-landing: 176px;
+
+$space-p-landing: 22px; 
+$space-h5-landing: 31px;
+$space-h4-landing: 44px;
+$space-h3-landing: 52px;
+$space-h2-landing: 88px;
+$space-h1-landing: 176px;
+$space-section-landing: 249px;
+
 $p-mini-size: 14px;
 $p-size: 20px; /* Rapport 1.414 */
 $h3-size: 28px;
@@ -14,14 +46,16 @@ $space-h2: 80px;
 $space-h1: 114px;
 $space-h1-ultrasize: 160px;
 
+// fonts
 $main-font: 'Pixelify Sans', sans-serif;
 $title-font: "Press Start 2P", system-ui;
 $text-font: "VT323", monospace;
 
-$line-height: 150%;
+$line-height: 140%;
 $inter-p: 20px;
 
 $color-dark-blue: #1e2046;
+$color-dark-blue-nav: #161832;
 $color-yellow: #FCEE09;
 $color-yellow-lighty: #fdf466;
 $color-red: #ff6666;
