@@ -393,11 +393,11 @@ function displayData(){
             `;
         } else {
             contentText.innerHTML = `
-                <h2 class="data__title text">${activeShape.translate().firstLetterCapitalize()}</h2>
+                <h2 class="data__title text">${activeShape.translate().firstLetterCapitalize()} en U.E.</h2>
             `;
 
             probaArea.innerHTML = `
-                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI en forme de ${activeShape.translate()}</span></li>
             `;
         }
         
@@ -422,15 +422,15 @@ function displayData(){
             `;
         } else if (activeShape) {
             contentText.innerHTML = `
-                <h2 class="data__title text">En ${currentYear} (${activeShape.translate()})</h2>
+                <h2 class="data__title text">U.E. en ${currentYear} (${activeShape.translate()})</h2>
             `;
 
             probaArea.innerHTML = `
-                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI</span></li>
+                <li class="data__el"><span class="data__important">${filteredUfoData.length}</span><span>OVNI en forme de ${activeShape.translate()}</span></li>
             `;
         } else {
             contentText.innerHTML = `
-                <h2 class="data__title text">En ${currentYear}</h2>
+                <h2 class="data__title text">U.E. en ${currentYear}</h2>
             `;
 
             probaArea.innerHTML = `
@@ -483,6 +483,35 @@ function getAvailableShapes(activeCountry, currentYear){
 
 
 // MAP
+//zoom au scroll
+let currentScrollZoom = 1; 
+let minScrollZoom = 1; 
+let maxScrollZoom = 5; 
+let stepScrollSize = 0.05;
+
+let container = document.querySelector('.data__map'); 
+
+container.addEventListener('wheel', function (event) { 
+    // Zoom in or out based on the scroll direction 
+    let direction = event.deltaY > 0 ? -1 : 1; 
+    zoomImage(direction); 
+});
+
+function zoomImage(direction) { 
+    let newZoom = currentScrollZoom + direction * stepScrollSize; 
+
+    // Limit the zoom level to the minimum and maximum values 
+    if (newZoom < minScrollZoom || newZoom > maxScrollZoom) { 
+        return; 
+    } 
+
+    currentScrollZoom = newZoom; 
+
+    // Update the CSS transform of the image to scale it 
+    zoom.style.transform = 'scale(' + currentScrollZoom + ')'; 
+}
+
+
 let scale = 1;
 let panning = false;
 let pointX = 0;
@@ -519,18 +548,18 @@ zoom.addEventListener('mousemove', function (e) {
     setTransform();
 })
 
-zoom.addEventListener('wheel', function (e) {
-    e.preventDefault();
-    let xs = (e.clientX - pointX) / scale;
-    let ys = (e.clientY - pointY) / scale;
-    let delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
-    (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
-    pointX = e.clientX - xs * scale;
-    pointY = e.clientY - ys * scale;
-    zoom.style.transition = "0s";
+// zoom.addEventListener('wheel', function (e) {
+//     e.preventDefault();
+//     let xs = (e.clientX - pointX) / scale;
+//     let ys = (e.clientY - pointY) / scale;
+//     let delta = (e.wheelDelta ? e.wheelDelta : -e.deltaY);
+//     (delta > 0) ? (scale *= 1.2) : (scale /= 1.2);
+//     pointX = e.clientX - xs * scale;
+//     pointY = e.clientY - ys * scale;
+//     zoom.style.transition = "0s";
 
-    setTransform();
-})
+//     setTransform();
+// })
 
 
 
